@@ -39,7 +39,7 @@ namespace wartinyfall76.NPCs
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 14;
+            Main.npcFrameCount[npc.type] = 23;
             NPCID.Sets.AttackFrameCount[npc.type] = 0; //???
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
