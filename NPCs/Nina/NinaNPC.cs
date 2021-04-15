@@ -36,7 +36,7 @@ namespace wartinyfall76.NPCs.Nina
         //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "Evil Student";
+            name = "EvilStudent";
             return mod.Properties.Autoload;
         }
 
@@ -82,7 +82,7 @@ namespace wartinyfall76.NPCs.Nina
 
                 foreach (Item item in player.inventory)
                 {
-                    if (item.type == mod.ItemType("TheStabbyStabber")) //for testing use Jame's stabby stabber
+                    if (item.type == mod.ItemType("TheStabbyStabber")) //for testing use James's stabby stabber
                     {
                         return true;
                     }

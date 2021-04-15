@@ -1,13 +1,13 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace wartinyfall76.Items
+namespace wartinyfall76.Items.StabbyStabber
 {
 	public class TheStabbyStabber : ModItem
 	{
 		public override void SetStaticDefaults() 
 		{
-			// DisplayName.SetDefault("TheStabbyStabber"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			DisplayName.SetDefault("TheStabberyStabber"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
 			Tooltip.SetDefault("The Stabbiest stabber to ever stab.");
 		}
 
@@ -19,7 +19,7 @@ namespace wartinyfall76.Items
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 6;
 			item.value = 1000;
 			item.rare = 2;

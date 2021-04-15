@@ -15,3 +15,4 @@ rarity
 
 
 https://github.com/tModLoader/tModLoader/wiki/Vanilla-World-Generation-Steps
+    https://imgur.com/a/EoXWh
