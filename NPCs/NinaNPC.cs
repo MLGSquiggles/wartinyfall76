@@ -9,6 +9,8 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
+//town npc Nina cortex. This is both the first NPC and town NPC in this mod that was implemented ingame :)
+
 namespace wartinyfall76.NPCs
 {
     [AutoloadHead]
@@ -25,27 +27,29 @@ namespace wartinyfall76.NPCs
             get { return "wartinyfall76/NPCs/NinaNPCHead"; }
         }
 
-        public override string[] AltTextures
-        {
-            get { return new[] { "wartinyfall76/NPCs/NinaNPC_Alt_1" }; }
-        }
+        //if we got alt textures (nina doesnt need)
+        //public override string[] AltTextures
+        //{
+        //    get { return new[] { "wartinyfall76/NPCs/NinaNPC_Alt_1" }; }
+        //}
 
+        //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "Adacemy of Evil Student";
+            name = "Evil Student";
             return mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 23;
-            NPCID.Sets.AttackFrameCount[npc.type] = 0; //???
+            Main.npcFrameCount[npc.type] = 23; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[npc.type] = 4; //???
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
             NPCID.Sets.AttackTime[npc.type] = 90;
             NPCID.Sets.AttackAverageChance[npc.type] = 30;
-            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            NPCID.Sets.HatOffsetY[npc.type] = 0; //higher the number the lower the hat, leave at 0
 
         }
 
@@ -59,8 +63,8 @@ namespace wartinyfall76.NPCs
             npc.damage = 69;
             npc.defense = 17;
             npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit15;
-            npc.DeathSound = SoundID.NPCDeath15;
+            npc.HitSound = SoundID.NPCHit1; 
+            npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             animationType = NPCID.Nurse;
         }
@@ -104,32 +108,62 @@ namespace wartinyfall76.NPCs
 
         public override string GetChat()
         {
-            int otherNPC = NPC.FindFirstNPC(NPCID.Guide); //checks if the guide is alive
-            if (otherNPC >= 0 && Main.rand.NextBool(4))
+            
+            if(!Main.bloodMoon) //if it is not a blood moon have these lines
             {
-                return "Hey this " + Main.npc[otherNPC].GivenName + " guy is a loser!";
+                int otherNPC = NPC.FindFirstNPC(NPCID.Guide); //checks if the guide is alive
+                if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
+                {
+                    return "Hey this " + Main.npc[otherNPC].GivenName + " guy is a loser!";
+                }
+                if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
+                {
+                    return "Where's the destruction at! I wanna see " + Main.worldName + " overtaken by evil!"; ;
+                }
+
+                switch (Main.rand.Next(3))
+                {
+                    case 0:
+                        return "Breaking things makes me happy.";
+                    case 1:
+                        return "Where the monsters at! Its getting boring here!";
+                    case 2:
+                        return "I hope you have been up to evil.";
+                    case 3:
+                        return "Evil things make me happy!";
+                    default:
+                        return "This beats doing schoolwork!";
+                }
             }
-            switch (Main.rand.Next(4))
+            else //if it is a blood moon have these lines
             {
-                case 0:
-                    return "Breaking things makes me happy.";
-                case 1:
-                    return "Where the monsters at! Its getting boring here!";
-                case 2:
-                    return "I hope you have been up to evil.";
-                case 3:
-                    return "Evil things make me happy!";
-                case 4:
-                    return "This beats doing schoolwork!";
-                default:
-                    return "Where's the destruction at! I wanna see " + Main.worldName + " overtaken by evil!";
+                int otherNPC = NPC.FindFirstNPC(NPCID.Nurse); //checks if the nurse is alive
+                if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the nurse is alive in a blood moon
+                {
+                    return "I don't feel right. Maybe I should check in with " + Main.npc[otherNPC].GivenName + " to see why " +
+                        "I don't feel like myself.";
+                }
+                switch (Main.rand.Next(3))
+                {
+                    case 0:
+                        return "Fixing things makes me happy.";
+                    case 1:
+                        return "Too many monsters! Destroy the evil! Why do I feel so happy!";
+                    case 2:
+                        return "I hope you have been up to heroic things... Hang on something's not right.";
+                    case 3:
+                        return "Good things make me happy! Isn't it such a pretty night?";
+                    default:
+                        return "This beats doing schoolwork!";
+                }
             }
+            
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("LegacyInterface.28");
-            button2 = "Debuff";
+            //button2 = "Debuff";
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -190,13 +224,13 @@ namespace wartinyfall76.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.ShadowBeamFriendly;
+            projType = ProjectileID.ShadowFlameKnife;
             attackDelay = 1;
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            multiplier = 5f;
+            multiplier = 20f;
             randomOffset = 2f;
         }
     }
