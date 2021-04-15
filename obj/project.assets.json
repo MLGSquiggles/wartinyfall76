@@ -31,23 +31,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lynbr\\.nuget\\packages\\": {},
+    "C:\\Users\\murph\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lynbr\\OneDrive\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\wartinyfall76.csproj",
+      "projectUniqueName": "C:\\Users\\murph\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\wartinyfall76.csproj",
       "projectName": "wartinyfall76",
-      "projectPath": "C:\\Users\\lynbr\\OneDrive\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\wartinyfall76.csproj",
-      "packagesPath": "C:\\Users\\lynbr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lynbr\\OneDrive\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\obj\\",
+      "projectPath": "C:\\Users\\murph\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\wartinyfall76.csproj",
+      "packagesPath": "C:\\Users\\murph\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\murph\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\lynbr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\murph\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -55,6 +55,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Discord_net": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -76,7 +77,7 @@
             "version": "[0.1.*, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
