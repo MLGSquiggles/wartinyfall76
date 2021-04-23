@@ -8,23 +8,24 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using wartinyfall76.NPCs.Nina;
 
-//town npc Nina cortex. This is both the first NPC and town NPC in this mod that was implemented ingame :)
+//town npc Preston Garvey. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
-namespace wartinyfall76.NPCs.Nina
+namespace wartinyfall76.NPCs.Preston
 {
     [AutoloadHead]
-    public class NinaNPC : ModNPC
+    public class PrestonNPC : ModNPC
     {
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Nina/NinaNPC"; }
+            get { return "wartinyfall76/NPCs/Preston/PrestonNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Nina/NinaNPCHead"; }
+            get { return "wartinyfall76/NPCs/Preston/PrestonNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
@@ -36,20 +37,20 @@ namespace wartinyfall76.NPCs.Nina
         //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "EvilStudent";
+            name = "MinutemenSeniorOfficer";
             return mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 23; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 4; //???
+            Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[npc.type] = 10; //???
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
-            NPCID.Sets.AttackTime[npc.type] = 90;
-            NPCID.Sets.AttackAverageChance[npc.type] = 30;
-            NPCID.Sets.HatOffsetY[npc.type] = 0; //higher the number the lower the hat, leave at 0
+            NPCID.Sets.AttackTime[npc.type] = 80;
+            NPCID.Sets.AttackAverageChance[npc.type] = 40;
+            NPCID.Sets.HatOffsetY[npc.type] = -3; //higher the number the lower the hat, leave at 0
 
         }
 
@@ -60,40 +61,46 @@ namespace wartinyfall76.NPCs.Nina
             npc.width = 18;
             npc.height = 40;
             npc.aiStyle = 7; //town npc style
-            npc.damage = 69;
+            npc.damage = 40;
             npc.defense = 17;
             npc.lifeMax = 250;
             npc.HitSound = SoundID.NPCHit1; 
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
-            animationType = NPCID.Nurse;
+            animationType = NPCID.ArmsDealer;
         }
 
-        //spawn in Nina, replace later
+        //spawn in Preston if the arms dealer is alive
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            for (int i = 0; i < 255; i++)
-            {
-                Player player = Main.player[i];
-                if (!player.active)
-                {
-                    continue;
-                }
+            //for (int i = 0; i < 255; i++)
+            //{
+            //    Player player = Main.player[i];
+            //    if (!player.active)
+            //    {
+            //        continue;
+            //    }
 
-                foreach (Item item in player.inventory)
-                {
-                    if (item.type == mod.ItemType("TheStabbyStabber")) //for testing use James's stabby stabber
-                    {
-                        return true;
-                    }
-                }
+            //    foreach (Item item in player.inventory)
+            //    {
+            //        if (item.type == mod.ItemType("TheStabbyStabber")) //for testing use James's stabby stabber
+            //        {
+            //            return true;
+            //        }
+            //    }
+            //}
+            int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer);
+            if (otherNPC >= 0)
+            {
+                return true;
             }
+                
             return false;
         }
 
         public override string TownNPCName()
         {
-            return "Nina Cortex";
+            return "Preston Garvey";
             /*
              switch(WorldGen.genRand.Next(4))
              {case 0 :
@@ -104,59 +111,50 @@ namespace wartinyfall76.NPCs.Nina
              return name 2;
              }
              */
-        }        
+        }
 
         public override string GetChat()
         {
             
-            if(!Main.bloodMoon) //if it is not a blood moon have these lines
-            {
-                int otherNPC = NPC.FindFirstNPC(NPCID.Guide); //checks if the guide is alive
+            //if(!Main.bloodMoon) //if it is not a blood moon have these lines
+            //{
+                int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer); //checks if the guide is alive
                 if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
                 {
-                    return "Hey this " + Main.npc[otherNPC].GivenName + " guy is a loser!";
+                    return "I had to get myself a new gun from " + Main.npc[otherNPC].GivenName + ". I don't know where my Laser Musket went.";
                 }
+
+                //otherNPC = NPC.FindFirstNPC(mod.NPCType("NinaNPC")); -- doesnt work
+                //if(otherNPC >= 0 && Main.rand.NextBool(3))
+                //{
+                //had trouble getting other town NPC names...
+                //nina = NPC.FindFirstNPC(mod.NPCType("NinaNPC"));//NPC.FindFirstNPC(mod.NPCType("NinaNPC"));
+                
+
+                //return Main.npc[otherNPC].GivenName + "Please be Nina cortex"; -- did not work
+                //}
+
                 if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
                 {
-                    return "Where's the destruction at! I wanna see " + Main.worldName + " overtaken by evil!"; ;
+                    return "Damm " + Main.worldName + " has monsters too...";
                 }
 
                 switch (Main.rand.Next(3))
                 {
                     case 0:
-                        return "Breaking things makes me happy.";
+                        return "You've got to protect the people at a minute's notice.";
                     case 1:
-                        return "Where the monsters at! Its getting boring here!";
+                        return "At least it's not raining.";
                     case 2:
-                        return "I hope you have been up to evil.";
+                        return "I kind of doubt the Brotherhood's intentions are peaceful.";
                     case 3:
-                        return "Evil things make me happy!";
+                        return "I had to put on a brave face as long as there were still people counting on me. That the only reason I kept going.";
                     default:
-                        return "This beats doing schoolwork!";
+                        return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
                 }
-            }
-            else //if it is a blood moon have these lines
-            {
-                int otherNPC = NPC.FindFirstNPC(NPCID.Nurse); //checks if the nurse is alive
-                if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the nurse is alive in a blood moon
-                {
-                    return "I don't feel right. Maybe I should check in with " + Main.npc[otherNPC].GivenName + " to see why " +
-                        "I don't feel like myself.";
-                }
-                switch (Main.rand.Next(3))
-                {
-                    case 0:
-                        return "Fixing things makes me happy.";
-                    case 1:
-                        return "Too many monsters! Destroy the evil! Why do I feel so happy!";
-                    case 2:
-                        return "I hope you have been up to heroic things... Hang on something's not right.";
-                    case 3:
-                        return "Good things make me happy! Isn't it such a pretty night?";
-                    default:
-                        return "This beats doing schoolwork!";
-                }
-            }
+            
+            
+            
             
         }
 
@@ -207,8 +205,8 @@ namespace wartinyfall76.NPCs.Nina
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 30;
-            randExtraCooldown = 25;
+            cooldown = 40;
+            randExtraCooldown = 35;
         }
 
         //public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
@@ -224,8 +222,15 @@ namespace wartinyfall76.NPCs.Nina
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.ShadowFlameKnife;
+            projType = ProjectileID.ChlorophyteBullet;
             attackDelay = 1;
+        }
+
+        public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
+        {
+            scale = 1; //?
+            item = 434; //434 should be the clockwork assault rifle
+            closeness = 1; //?
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
