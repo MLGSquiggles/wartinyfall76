@@ -181,7 +181,7 @@ namespace wartinyfall76.NPCs.Preston
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("TheStabbyStabber"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("ScorchedTransmitter"));
             nextSlot++;
 
             //condtions can also exist
@@ -222,14 +222,14 @@ namespace wartinyfall76.NPCs.Preston
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.ChlorophyteBullet;
+            projType = ProjectileID.ChargedBlasterLaser;
             attackDelay = 1;
         }
 
         public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
         {
             scale = 1; //?
-            item = 434; //434 should be the clockwork assault rifle
+            item = 434; //434 should be the clockwork assault rifle 96 is musket
             closeness = 1; //?
         }
 
