@@ -81,7 +81,7 @@ namespace wartinyfall76.NPCs.Scorched
             }
             if (Main.invasionSize <= 0)
             {
-                text = "Scoreched Earth has been defeated.";
+                text = "Scorched Earth has been defeated.";
             }
             if (Main.netMode == 0)
             {
