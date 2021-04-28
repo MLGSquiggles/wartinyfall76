@@ -43,7 +43,7 @@ namespace wartinyfall76
             //Change spawn stuff if invasion up and invasion at spawn
             if (wartinyfall76World.ScorchedInvasionUp && (Main.invasionX == (double)Main.spawnTileX))
             {
-                spawnRate = 10; //The higher the number, the less chance it will spawn 100 was default in example
+                spawnRate = 50; //The higher the number, the less chance it will spawn 100 was default in example
                 maxSpawns = 10000; //Max spawns of NPCs depending on NPC value
             }
         }

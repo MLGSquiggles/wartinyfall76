@@ -69,15 +69,15 @@ namespace wartinyfall76.NPCs.Scorched
         //spawn in the overworld as a test, eventually spawn in during event
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if(wartinyfall76World.ScorchedInvasionUp)
-            {
-                return  0.5f;
-            }
-            else
-            {
-                return 0;
-            }
-           
+            //if(wartinyfall76World.ScorchedInvasionUp)
+            //{
+            //    return  0.5f;
+            //}
+            //else
+            //{
+            //    return 0;
+            //}
+            return 0;
         }
 
         public override void HitEffect(int hitDirection, double damage)

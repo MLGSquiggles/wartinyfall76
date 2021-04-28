@@ -222,7 +222,7 @@ namespace wartinyfall76.NPCs.Preston
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.ChargedBlasterLaser;
+            projType = ProjectileID.DeathLaser;
             attackDelay = 1;
         }
 
