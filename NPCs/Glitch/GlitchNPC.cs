@@ -2,30 +2,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Nina;
 
-//town npc Preston Garvey. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
-namespace wartinyfall76.NPCs.Preston
+//town npc GLitch. This is intentionally strange
+
+namespace wartinyfall76.NPCs.Glitch
 {
     [AutoloadHead]
-    public class PrestonNPC : ModNPC
+    public class GlitchNPC : ModNPC
     {
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Preston/PrestonNPC"; }
+            get { return "wartinyfall76/NPCs/Glitch/GlitchNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Preston/PrestonNPCHead"; }
+            get { return "wartinyfall76/NPCs/Glitch/GlitchNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
@@ -37,7 +38,7 @@ namespace wartinyfall76.NPCs.Preston
         //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "MinutemenSeniorOfficer";
+            name = "GlitchedAnomaly";
             return mod.Properties.Autoload;
         }
 
@@ -46,11 +47,11 @@ namespace wartinyfall76.NPCs.Preston
         {
             Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
             NPCID.Sets.AttackFrameCount[npc.type] = 10; //???
-            NPCID.Sets.DangerDetectRange[npc.type] = 700;
+            NPCID.Sets.DangerDetectRange[npc.type] = 1000;
             NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
             NPCID.Sets.AttackTime[npc.type] = 80;
             NPCID.Sets.AttackAverageChance[npc.type] = 40;
-            NPCID.Sets.HatOffsetY[npc.type] = -3; //higher the number the lower the hat, leave at 0
+            NPCID.Sets.HatOffsetY[npc.type] = 0; //higher the number the lower the hat, leave at 0
 
         }
 
@@ -62,15 +63,15 @@ namespace wartinyfall76.NPCs.Preston
             npc.height = 40;
             npc.aiStyle = 7; //town npc style
             npc.damage = 40;
-            npc.defense = 17;
+            npc.defense = 250;
             npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1; 
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.HitSound = SoundID.NPCHit57; 
+            npc.DeathSound = SoundID.NPCDeath62;
             npc.knockBackResist = 0.5f;
-            animationType = NPCID.ArmsDealer;
+            animationType = NPCID.Merchant;
         }
 
-        //spawn in Preston if the arms dealer is alive
+        //spawn in if the Preston and Nina are alive
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             //for (int i = 0; i < 255; i++)
@@ -89,8 +90,9 @@ namespace wartinyfall76.NPCs.Preston
             //        }
             //    }
             //}
-            int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer);
-            if (otherNPC >= 0)
+            int otherNPC = mod.NPCType("EvilStudent");
+            int otherNPC2 = mod.NPCType("MinutemenSeniorOfficer");
+            if (otherNPC >= 0 && otherNPC >= 0)
             {
                 return true;
             }
@@ -100,17 +102,86 @@ namespace wartinyfall76.NPCs.Preston
 
         public override string TownNPCName()
         {
-            return "Preston Garvey";
-            /*
-             switch(WorldGen.genRand.Next(4))
-             {case 0 :
-             return "name 0";
-             case 1:
-             return name 1;
-             case 2: 
-             return name 2;
-             }
-             */
+            string wackName = "M";
+            
+            //give us a semi random name with some pre done strings
+            for(int i = 0; i < 5; i++)
+            {
+                switch (WorldGen.genRand.Next(20))
+                {
+                    case 0:
+                        wackName = wackName + "e";
+                        break;
+                    case 1:
+                        wackName = wackName + "rag";
+                        break;
+                    case 2:
+                        wackName = wackName + "ol";
+                        break;
+                    case 3:
+                        wackName = wackName + "me";
+                        break;
+                    case 4:
+                        wackName = wackName + "a";
+                        break;
+                    case 5:
+                        wackName = wackName + "qu";
+                        break;
+                    case 6:
+                        wackName = wackName + "ow";
+                        break;
+                    case 7:
+                        wackName = wackName + "op";
+                        break;
+                    case 8:
+                        wackName = wackName + "otto";
+                        break;
+                    case 9:
+                        wackName = wackName + "z";
+                        break;
+                    case 10:
+                        wackName = wackName + "xe";
+                        break;
+                    case 11:
+                        wackName = wackName + "n";
+                        break;
+                    case 12:
+                        wackName = wackName + "wo";
+                        break;
+                    case 13:
+                        wackName = wackName + "we";
+                        break;
+                    case 14:
+                        wackName = wackName + "egg";
+                        break;
+                    case 15:
+                        wackName = wackName + "moon";
+                        break;
+                    case 16:
+                        wackName = wackName + "lord";
+                        break;
+                    case 17:
+                        wackName = wackName + "nina";
+                        break;
+                    case 18:
+                        wackName = wackName + "mer";
+                        break;
+                    case 19:
+                        wackName = wackName + "chant";
+                        break;
+                    case 20:
+                        wackName = wackName + "help";
+                        break;
+                    default:
+                        wackName = wackName + "ette";
+                        break;
+
+                }
+            }
+             
+
+            return wackName;
+             
         }
 
         public override string GetChat()
@@ -118,10 +189,10 @@ namespace wartinyfall76.NPCs.Preston
             
             //if(!Main.bloodMoon) //if it is not a blood moon have these lines
             //{
-                int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer); //checks if the guide is alive
+                int otherNPC = NPC.FindFirstNPC(NPCID.Merchant); //checks if the guide is alive
                 if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
                 {
-                    return "I had to get myself a new gun from " + Main.npc[otherNPC].GivenName + ". I don't know where my Laser Musket went.";
+                    return "He seems familiar that " + Main.npc[otherNPC].GivenName + "!";
                 }
 
                 //otherNPC = NPC.FindFirstNPC(mod.NPCType("NinaNPC")); -- doesnt work
@@ -134,21 +205,39 @@ namespace wartinyfall76.NPCs.Preston
                 //return Main.npc[otherNPC].GivenName + "Please be Nina cortex"; -- did not work
                 //}
 
-                if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
+            if(Main.raining)
+            {
+                return "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+            }
+            
+            if(Main.bloodMoon)
+            {
+                switch (Main.rand.Next(3))
                 {
-                    return "Damm " + Main.worldName + " has monsters too...";
+                    case 0:
+                        return "When the moon goes red I of course need a home to live in.";
+                    case 1:
+                        return "There are some special plants and commodities are volatile and my dark arts, mysterious.";
+                    case 2:
+                        return "Mama always said you've got to more blinking lights";
+                    case 3:
+                        return "I'm no landlubber, but it's better to rest of the skeletons down here.";
+                    default:
+                        return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
                 }
+            }
+                
 
                 switch (Main.rand.Next(3))
                 {
                     case 0:
-                        return "You've got to protect the people at a minute's notice.";
+                        return "Don't blame me if I destroy your world.";
                     case 1:
-                        return "At least it's not raining.";
+                        return "Settlement blame me are dangerous!";
                     case 2:
-                        return "I kind of doubt the Brotherhood's intentions are peaceful.";
+                        return "My wares are dangerous, use them with caution";
                     case 3:
-                        return "I had to put on a brave face as long as there were still people counting on me. Thats the only reason I kept going.";
+                        return "I had to put on a breaking things makes destroy your world.";
                     default:
                         return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
                 }
@@ -199,14 +288,14 @@ namespace wartinyfall76.NPCs.Preston
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            damage = 25;
+            damage = 4000;
             knockback = 4f;
         }
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 40;
-            randExtraCooldown = 35;
+            cooldown = 20;
+            randExtraCooldown = 15;
         }
 
         //public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
@@ -222,15 +311,16 @@ namespace wartinyfall76.NPCs.Preston
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.DeathLaser;
+            projType = ProjectileID.ChlorophyteBullet;
             attackDelay = 1;
         }
 
         public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
         {
             scale = 1; //?
-            item = 434; //434 should be the clockwork assault rifle 96 is musket
+            item = Main.rand.Next(1000); 
             closeness = 1; //?
+            
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
