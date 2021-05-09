@@ -102,75 +102,104 @@ namespace wartinyfall76.NPCs.Glitch
 
         public override string TownNPCName()
         {
-            string wackName = "M";
-            
-            //give us a semi random name with some pre done strings
-            for(int i = 0; i < 5; i++)
+            string wackName = "";
+
+            switch (WorldGen.genRand.Next(6))
             {
+                case 0:
+                    wackName = wackName + "B";
+                    break;
+                case 1:
+                    wackName = wackName + "M";
+                    break;
+                case 2:
+                    wackName = wackName + "P";
+                    break;
+                case 3:
+                    wackName = wackName + "L";
+                    break;
+                case 4:
+                    wackName = wackName + "J";
+                    break;
+                case 5:
+                    wackName = wackName + "B";
+                    break;
+                case 6:
+                    wackName = wackName + "R";
+                    break;
+                default:
+                    wackName = wackName + "C";
+                    break;
+
+            }
+
+                    //give us a semi random name with some pre done strings
+                    for (int i = 0; i < 5; i++)
+                    {
                 switch (WorldGen.genRand.Next(20))
                 {
                     case 0:
-                        wackName = wackName + "e";
+                        wackName = wackName + "arl";
                         break;
                     case 1:
-                        wackName = wackName + "rag";
+                        wackName = wackName + "odney";
                         break;
                     case 2:
-                        wackName = wackName + "ol";
+                        wackName = wackName + "ames";
                         break;
                     case 3:
-                        wackName = wackName + "me";
+                        wackName = wackName + "atthew";
                         break;
                     case 4:
-                        wackName = wackName + "a";
+                        wackName = wackName + "uan";
                         break;
                     case 5:
-                        wackName = wackName + "qu";
+                        wackName = wackName + "elaney";
                         break;
                     case 6:
-                        wackName = wackName + "ow";
+                        wackName = wackName + "ake";
                         break;
                     case 7:
-                        wackName = wackName + "op";
+                        wackName = wackName + "ared";
                         break;
                     case 8:
-                        wackName = wackName + "otto";
+                        wackName = wackName + "eter";
                         break;
                     case 9:
-                        wackName = wackName + "z";
+                        wackName = wackName + "omas";
                         break;
                     case 10:
-                        wackName = wackName + "xe";
+                        wackName = wackName + "arlos";
                         break;
                     case 11:
-                        wackName = wackName + "n";
+                        wackName = wackName + "achel";
                         break;
                     case 12:
-                        wackName = wackName + "wo";
+                        wackName = wackName + "ann";
                         break;
                     case 13:
-                        wackName = wackName + "we";
+                        wackName = wackName + "arvey";
                         break;
                     case 14:
-                        wackName = wackName + "egg";
+                        wackName = wackName + "ortex";
                         break;
                     case 15:
-                        wackName = wackName + "moon";
+                        wackName = wackName + "oonlord";
                         break;
                     case 16:
-                        wackName = wackName + "lord";
+                        wackName = wackName + "owser";
                         break;
                     case 17:
-                        wackName = wackName + "nina";
+                        wackName = wackName + "eggman";
                         break;
                     case 18:
-                        wackName = wackName + "mer";
+                        wackName = wackName + "aun";
                         break;
                     case 19:
-                        wackName = wackName + "chant";
+                        wackName = wackName + "ott";
                         break;
                     case 20:
-                        wackName = wackName + "help";
+                        wackName = wackName + "eaper";
                         break;
                     default:
                         wackName = wackName + "ette";
@@ -190,27 +219,43 @@ namespace wartinyfall76.NPCs.Glitch
             //if(!Main.bloodMoon) //if it is not a blood moon have these lines
             //{
                 int otherNPC = NPC.FindFirstNPC(NPCID.Merchant); //checks if the guide is alive
-                if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
+                if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the merchant is alive
                 {
-                    return "He seems familiar that " + Main.npc[otherNPC].GivenName + "!";
+                    return "I wish " + Main.npc[otherNPC].GivenName + " would be more careful. I'm getting tired of having to sew his limbs back on every day.!";
                 }
 
-                //otherNPC = NPC.FindFirstNPC(mod.NPCType("NinaNPC")); -- doesnt work
-                //if(otherNPC >= 0 && Main.rand.NextBool(3))
-                //{
-                //had trouble getting other town NPC names...
-                //nina = NPC.FindFirstNPC(mod.NPCType("NinaNPC"));//NPC.FindFirstNPC(mod.NPCType("NinaNPC"));
-                
+                otherNPC = NPC.FindFirstNPC(NPCID.Truffle);
+                if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the truffle is alive
+                {
+                    return "Tried to get " + Main.npc[otherNPC].GivenName + " to pay me with favors once, now I have fungus growing in strange places.";
+                }
 
-                //return Main.npc[otherNPC].GivenName + "Please be Nina cortex"; -- did not work
-                //}
-
-            if(Main.raining)
+            otherNPC = NPC.FindFirstNPC(NPCID.Clothier);
+            if (otherNPC >= 0 && Main.rand.NextBool(3)) //randomly if the clothier is alive
             {
-                return "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+                return Main.npc[otherNPC].GivenName + " is a looker. Too bad she's such a prude.";
             }
-            
-            if(Main.bloodMoon)
+
+            otherNPC = NPC.FindFirstNPC(NPCID.Nurse);
+            if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the clothier is alive
+            {
+                return "Hey, has " + Main.npc[otherNPC].GivenName + " mentioned needing to go to the doctor for any reason? I make a rather enchanting hot chocolate if you'd be inter...No? Ok.";
+            }
+
+            //otherNPC = mod.NPCType("EvilStudent");
+            //if(otherNPC >= 0 && Main.rand.NextBool(7))
+            //{
+            //had trouble getting other town NPC names...
+            //nina = NPC.FindFirstNPC(mod.NPCType("NinaNPC"));//NPC.FindFirstNPC(mod.NPCType("NinaNPC"));
+
+
+            //return "Check out Nina Cortex. Now that's a girl who can paint the town red!"; //-- did not work
+            //}
+
+
+
+
+            if (Main.bloodMoon)
             {
                 switch (Main.rand.Next(3))
                 {
@@ -228,16 +273,30 @@ namespace wartinyfall76.NPCs.Glitch
             }
                 
 
-                switch (Main.rand.Next(3))
+                switch (Main.rand.Next(10))
                 {
                     case 0:
-                        return "Don't blame me if I destroy your world.";
+                        return "Explosives are da' bomb. How many times a week can you come in with severe lava burns? ";
                     case 1:
-                        return "Settlement blame me are dangerous!";
+                        return "My expedition efficiency was all out of titanium white, so don't even ask.";
                     case 2:
-                        return "My wares are dangerous, use them with caution";
+                        return "Two people will not live in the same home. Also, if their home is destroyed, I'm gonna need more gold than that.";
                     case 3:
-                        return "I had to put on a breaking things makes destroy your world.";
+                        return "Keep your hands off my gun, That will get the attention of a dryad.";
+                    case 4:
+                        return "I hear a race of lizardmen painted a mural on this wall just a moment ago. Shoulda bought a weather radio!";
+                    case 5:
+                        return "So two goblins walk into a bar. It's pretty cold in the snow biome, maybe even bolts!";
+                    case 6:
+                        return "I sell what I want! If you don't like it, NO SMOKING IN HERE!!";
+                    case 7:
+                        return "Must everyone open and shut doors so incredibly noisily around here?! Be ready for anything if you decide to harvest one.";
+                    case 8:
+                        return "I tried having a paintball fight. Stop staring!";
+                    case 9:
+                        return "What? You thought I wasn't... Egg Nog!";
+                    case 10:
+                        return "Turn your head and you are not aging very gracefully.";
                     default:
                         return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
                 }

@@ -18,7 +18,9 @@ namespace wartinyfall76.NPCs.Scorched
         public static int[] invader = {            
             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Zombie"), //idk but this was being weird
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Voodoo Demon"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Derpling")
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Derpling"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Snowman Gangsta"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Lihzahrd")
         };
 
         //Setup for an Invasion
