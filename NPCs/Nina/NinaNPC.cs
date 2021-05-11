@@ -183,7 +183,7 @@ namespace wartinyfall76.NPCs.Nina
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("TheStabbyStabber"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("AkuAkuItem"));
             nextSlot++;
 
             //condtions can also exist
