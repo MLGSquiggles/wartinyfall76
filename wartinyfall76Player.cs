@@ -25,11 +25,13 @@ namespace wartinyfall76
     public class wartinyfall76Player : ModPlayer
     {
        public bool AkuAkuPet = false;
+        public bool GreenStaffPet = false;
 
         //reset stuff in this function (stuff that should be reset on death)
         public override void ResetEffects()
         {
             AkuAkuPet = false;
+            GreenStaffPet = false;
         }
     }
 }

@@ -16,6 +16,9 @@ namespace wartinyfall76.NPCs.Nina
     [AutoloadHead]
     public class NinaNPC : ModNPC
     {
+        //this function allows us to find if it exists in the world
+        public static NPC FindNPC(int npcType) => Main.npc.FirstOrDefault(npc => npc.type == npcType && npc.active);
+
         //load texture for the npc
         public override string Texture
         {

@@ -1,14 +1,13 @@
-﻿using IL.Terraria.UI;
-using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using wartinyfall76.NPCs.Nina;
+using wartinyfall76.NPCs.Preston;
 
 
 //town npc GLitch. This is intentionally strange
@@ -18,6 +17,11 @@ namespace wartinyfall76.NPCs.Glitch
     [AutoloadHead]
     public class GlitchNPC : ModNPC
     {
+        ////this function allows us to find if it exists in the world
+        public static NPC FindNPC(int npcType) => Main.npc.FirstOrDefault(npc => npc.type == npcType && npc.active);
+
+        public int currentRandomItem = Main.rand.Next(2000);
+
         //load texture for the npc
         public override string Texture
         {
@@ -90,9 +94,12 @@ namespace wartinyfall76.NPCs.Glitch
             //        }
             //    }
             //}
-            int otherNPC = mod.NPCType("EvilStudent");
-            int otherNPC2 = mod.NPCType("MinutemenSeniorOfficer");
-            if (otherNPC >= 0 && otherNPC >= 0)
+
+            //this is broken as it only checks if nina and preston exist in the mod itself...
+            NPC nina = FindNPC(ModContent.NPCType<NinaNPC>());
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+            
+            if (nina != null && preston != null)
             {
                 return true;
             }
@@ -213,51 +220,71 @@ namespace wartinyfall76.NPCs.Glitch
              
         }
 
+        
+
         public override string GetChat()
         {
-            
-            //if(!Main.bloodMoon) //if it is not a blood moon have these lines
-            //{
-                int otherNPC = NPC.FindFirstNPC(NPCID.Merchant); //checks if the guide is alive
-                if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the merchant is alive
-                {
-                    return "I wish " + Main.npc[otherNPC].GivenName + " would be more careful. I'm getting tired of having to sew his limbs back on every day.!";
-                }
+            //each time you talk to him his item he attacks with changes
+            currentRandomItem = Main.rand.Next(2000);
 
-                otherNPC = NPC.FindFirstNPC(NPCID.Truffle);
-                if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the truffle is alive
-                {
-                    return "Tried to get " + Main.npc[otherNPC].GivenName + " to pay me with favors once, now I have fungus growing in strange places.";
-                }
+            
+            int otherNPC = NPC.FindFirstNPC(NPCID.Merchant); //checks if the guide is alive
+            if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the merchant is alive
+            {
+                return "I wish " + Main.npc[otherNPC].GivenName + " would be more careful. I'm getting tired of having to sew his limbs back on every day.!";
+            }
+
+            otherNPC = NPC.FindFirstNPC(NPCID.Truffle);
+            if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the truffle is alive
+            {
+                return "Tried to get " + Main.npc[otherNPC].GivenName + " to pay me with favors once, now I have fungus growing in strange places.";
+            }
 
             otherNPC = NPC.FindFirstNPC(NPCID.Clothier);
             if (otherNPC >= 0 && Main.rand.NextBool(3)) //randomly if the clothier is alive
             {
-                return Main.npc[otherNPC].GivenName + " is a looker. Too bad she's such a prude.";
+                bool line = Main.rand.NextBool(2);
+                if(line)
+                {
+                    return Main.npc[otherNPC].GivenName + " is a looker. Too bad she's such a prude.";
+                }
+                else
+                {
+                    return "I woke up to the clothier chewing on my foot last night.";
+                }
+                
+
             }
 
             otherNPC = NPC.FindFirstNPC(NPCID.Nurse);
-            if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the clothier is alive
+            if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the nurse is alive
             {
                 return "Hey, has " + Main.npc[otherNPC].GivenName + " mentioned needing to go to the doctor for any reason? I make a rather enchanting hot chocolate if you'd be inter...No? Ok.";
             }
 
-            //otherNPC = mod.NPCType("EvilStudent");
-            //if(otherNPC >= 0 && Main.rand.NextBool(7))
-            //{
-            //had trouble getting other town NPC names...
-            //nina = NPC.FindFirstNPC(mod.NPCType("NinaNPC"));//NPC.FindFirstNPC(mod.NPCType("NinaNPC"));
+            otherNPC = NPC.FindFirstNPC(NPCID.Steampunker);
+            if (otherNPC >= 0 && Main.rand.NextBool(5)) //randomly if the steampunker is alive
+            {
+                return "Ah, they will tell tales of " + Main.npc[otherNPC].GivenName + " some day... Have you seen Chith...Shith.. Chat... The big eye?";
+            }
+
+            //if nina exists
+            NPC nina = FindNPC(ModContent.NPCType<NinaNPC>());         
+            if (nina != null && Main.rand.NextBool(7))
+            {
+                return "Check out Nina Cortex. Now that's a girl who can paint the town red!"; //-- did not work
+            }
 
 
-            //return "Check out Nina Cortex. Now that's a girl who can paint the town red!"; //-- did not work
-            //}
-
-
-
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+            if(preston != null && Main.rand.NextBool(8))
+            {
+                return "How come Preston Garvey won't sell me any ale? Either you have style, or you get styled.";
+            }
 
             if (Main.bloodMoon)
             {
-                switch (Main.rand.Next(3))
+                switch (Main.rand.Next(5))
                 {
                     case 0:
                         return "When the moon goes red I of course need a home to live in.";
@@ -267,13 +294,17 @@ namespace wartinyfall76.NPCs.Glitch
                         return "Mama always said you've got to more blinking lights";
                     case 3:
                         return "I'm no landlubber, but it's better to rest of the skeletons down here.";
+                    case 4:
+                        return "Tipping IS optional, but remember I like your... gear. Does it come in brass?";
+                    case 5:
+                        return "As if living underground wasn't bad enough, jerks like you come in while I'm sleeping and steal my children, so enough with your palaver you ragamuffin!";
                     default:
                         return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
                 }
             }
                 
 
-                switch (Main.rand.Next(10))
+                switch (Main.rand.Next(11))
                 {
                     case 0:
                         return "Explosives are da' bomb. How many times a week can you come in with severe lava burns? ";
@@ -294,10 +325,12 @@ namespace wartinyfall76.NPCs.Glitch
                     case 8:
                         return "I tried having a paintball fight. Stop staring!";
                     case 9:
-                        return "What? You thought I wasn't... Egg Nog!";
-                    case 10:
                         return "Turn your head and you are not aging very gracefully.";
-                    default:
+                    case 10:
+                        return "Gurrllll! You are my favorite gossip ever. I wonder if the moon is made of cheese...huh, what? Oh yes, buy something!";
+                    case 11:
+                        return "What? You thought I wasn't... Egg Nog!";
+                default:
                         return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
                 }
             
@@ -329,7 +362,7 @@ namespace wartinyfall76.NPCs.Glitch
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("ScorchedTransmitter"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("GreenStaffItem"));
             nextSlot++;
 
             //condtions can also exist
@@ -353,8 +386,8 @@ namespace wartinyfall76.NPCs.Glitch
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 20;
-            randExtraCooldown = 15;
+            cooldown = 5;
+            randExtraCooldown = 10;
         }
 
         //public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
@@ -377,7 +410,8 @@ namespace wartinyfall76.NPCs.Glitch
         public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
         {
             scale = 1; //?
-            item = Main.rand.Next(1000); 
+            //currentRandomItem = Main.rand.Next(1000);
+            item = currentRandomItem;
             closeness = 1; //?
             
         }
