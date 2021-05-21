@@ -365,6 +365,9 @@ namespace wartinyfall76.NPCs.Glitch
             shop.item[nextSlot].SetDefaults(mod.ItemType("GreenStaffItem"));
             nextSlot++;
 
+            shop.item[nextSlot].SetDefaults(mod.ItemType("MatthiusPainting"));
+            nextSlot++;
+
             //condtions can also exist
             if (Main.bloodMoon)
             {
