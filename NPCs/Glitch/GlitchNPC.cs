@@ -368,6 +368,18 @@ namespace wartinyfall76.NPCs.Glitch
             shop.item[nextSlot].SetDefaults(mod.ItemType("MatthiusPainting"));
             nextSlot++;
 
+
+            //if nina and preston are alive sell the trio painting
+            NPC nina = FindNPC(ModContent.NPCType<NinaNPC>());
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+
+            if (nina != null && preston != null)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("TrioPainting"));
+                nextSlot++;
+            }
+
+
             //condtions can also exist
             if (Main.bloodMoon)
             {
