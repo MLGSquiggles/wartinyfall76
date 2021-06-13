@@ -20,7 +20,10 @@ namespace wartinyfall76.NPCs.Scorched
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Voodoo Demon"),
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Derpling"),
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Snowman Gangsta"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Lihzahrd")
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Lihzahrd"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Ichor Sticker"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Flying Shark"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Goblin Summoner")
         };
 
         //Setup for an Invasion

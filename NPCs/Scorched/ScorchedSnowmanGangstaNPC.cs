@@ -45,8 +45,8 @@ namespace wartinyfall76.NPCs.Scorched
         public override void SetDefaults()
         {
                
-            npc.width = 18;
-            npc.height = 40;
+            npc.width = 30;
+            npc.height = 50;
             npc.aiStyle = 38; //snowman AI
             npc.damage = 40;
             npc.defense = 30;

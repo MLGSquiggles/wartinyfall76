@@ -46,7 +46,7 @@ namespace wartinyfall76.NPCs.Scorched
         public override void SetDefaults()
         {
                
-            npc.width = 18;
+            npc.width = 66;
             npc.height = 40;
             npc.aiStyle = 3; //fighter AI style
             npc.damage = 100;
@@ -102,7 +102,7 @@ namespace wartinyfall76.NPCs.Scorched
                 Item.NewItem(npc.position, mod.ItemType("UltraciteOre_Item"));
             }
 
-            if (Main.rand.Next(30) == 30)
+            if (Main.rand.Next(20) == 0)
             {
                 Item.NewItem(npc.position, ItemID.OrichalcumHeadgear);
             }

@@ -45,8 +45,8 @@ namespace wartinyfall76.NPCs.Scorched
         public override void SetDefaults()
         {
 
-            npc.width = 18;
-            npc.height = 40;
+            npc.width = 48;
+            npc.height = 90;
             npc.aiStyle = 14; //bat AI style
             npc.damage = 100;
             npc.defense = 23;
