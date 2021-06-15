@@ -16,6 +16,7 @@ namespace wartinyfall76.Items.Ultracite
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("UltraciteOre");
             Tooltip.SetDefault("Ultracite Ore. \nIs radioactive, handle with caution.");
         }
 
