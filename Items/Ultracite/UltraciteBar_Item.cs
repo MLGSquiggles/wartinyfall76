@@ -44,7 +44,7 @@ namespace wartinyfall76.Items.Ultracite
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.UltraciteOre_Item, 6);
+			recipe.AddIngredient(ModContent.ItemType<Items.Ultracite.UltraciteOre_Item>(), 6);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
