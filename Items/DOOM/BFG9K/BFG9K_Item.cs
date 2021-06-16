@@ -29,7 +29,7 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 			item.shootSpeed = 10f; // the speed of the projectile (measured in pixels per frame)
 			item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
 		}
-	}
+
 		/*
 		public override void AddRecipes() 
 		{
@@ -39,6 +39,7 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 			//recipe.SetResult(this);
 			//recipe.AddRecipe();
 		} 
-		*\ 
+		*/
 	}
+
 }
