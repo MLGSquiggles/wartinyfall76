@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 
 namespace wartinyfall76.NPCs.Scorched
 {
-    [AutoloadHead]
+    //[AutoloadHead]
     public class ScorchedIchorStickerNPC : ModNPC
     {
         //load texture for the npc

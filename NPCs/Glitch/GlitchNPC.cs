@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using wartinyfall76.NPCs.Nina;
 using wartinyfall76.NPCs.Preston;
+using wartinyfall76;
 
 
 //town npc GLitch. This is intentionally strange
@@ -21,6 +22,8 @@ namespace wartinyfall76.NPCs.Glitch
         public static NPC FindNPC(int npcType) => Main.npc.FirstOrDefault(npc => npc.type == npcType && npc.active);
 
         public int currentRandomItem = Main.rand.Next(2000);
+
+        //public bool CanSellBeastPainting = wartinyfall76World.downedScorchedInvasion;
 
         //load texture for the npc
         public override string Texture
@@ -379,6 +382,12 @@ namespace wartinyfall76.NPCs.Glitch
                 nextSlot++;
             }
 
+            //if scorched earth is defeated
+            //if () //CanSellBeastPainting
+            //{
+                shop.item[nextSlot].SetDefaults(mod.ItemType("GlitchedBeastPainting"));
+                nextSlot++;
+            //}
 
             //condtions can also exist
             if (Main.bloodMoon)

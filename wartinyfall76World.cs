@@ -25,6 +25,7 @@ namespace wartinyfall76
     public class wartinyfall76World : ModWorld
     {
 
+
         #region GENERATION
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
