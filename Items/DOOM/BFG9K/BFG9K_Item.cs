@@ -30,7 +30,7 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 			item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
 		}
 	}
-
+		/*
 		public override void AddRecipes() 
 		{
 			//ModRecipe recipe = new ModRecipe(mod);
@@ -38,6 +38,7 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 			//recipe.AddTile(TileID.Hellforge);
 			//recipe.SetResult(this);
 			//recipe.AddRecipe();
-		}
+		} 
+		*\ 
 	}
 }
