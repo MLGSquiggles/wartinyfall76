@@ -8,7 +8,7 @@ namespace wartinyfall76.Items.Warframe.Baza
 		public override void SetStaticDefaults() 
 		{
 			DisplayName.SetDefault("Baza"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("The Baza is a silenced, rapid-fire Tenno submachine gun with a high critical chance, critical multiplier, and fire rate while maintaining extreme accuracy at the cost of small magazine resulting in frequent reloading and medium range damage falloff.");
+			Tooltip.SetDefault("The Baza is a silenced, rapid-fire Tenno submachine gun with a high critical chance.");
 		}
 
 		public override void SetDefaults() 
@@ -40,6 +40,10 @@ namespace wartinyfall76.Items.Warframe.Baza
 			//recipe.AddRecipe();
 		} 
 		*/
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(10, 0);
+		}
 	}
 
 }
