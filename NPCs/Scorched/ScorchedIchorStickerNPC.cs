@@ -55,6 +55,7 @@ namespace wartinyfall76.NPCs.Scorched
             npc.DeathSound = SoundID.NPCDeath23; //crimson death sound
             npc.knockBackResist = 0.01f;
             npc.value = 20f;
+            npc.noGravity = true;
 
             //use these if copying an existing thing from terraria
             aiType = NPCID.IchorSticker;

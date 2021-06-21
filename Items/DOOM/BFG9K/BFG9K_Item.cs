@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace wartinyfall76.Items.DOOM.BFG9K
 {
@@ -40,6 +41,11 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 			//recipe.AddRecipe();
 		} 
 		*/
+
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-7, 0);
+		}
 	}
 
 }
