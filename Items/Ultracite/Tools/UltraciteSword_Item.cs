@@ -22,8 +22,8 @@ namespace wartinyfall76.Items.Ultracite.Tools
             item.value = 100000;
             item.rare = 11;
             // useage
-            item.useTime = 5; // test????
-            item.useAnimation = 5;
+            item.useTime = 16; // test????
+            item.useAnimation = 16;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTurn = true;
             item.autoReuse = true;
@@ -31,7 +31,7 @@ namespace wartinyfall76.Items.Ultracite.Tools
             // item.axe = 30;
             // weapon settings
             item.melee = true;
-            item.damage = 165;
+            item.damage = 215;
             item.knockBack = 7;
         }
 

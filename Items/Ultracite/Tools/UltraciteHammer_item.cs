@@ -22,13 +22,13 @@ namespace wartinyfall76.Items.Ultracite.Tools
             item.value = 100000;
             item.rare = 11;
             // useage
-            item.useTime = 5; // test????
-            item.useAnimation = 5;
+            item.useTime = 20; // test????
+            item.useAnimation = 20;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.useTurn = true;
             item.autoReuse = true;
             //axe properties
-            item.hammer = 36;
+            item.hammer = 250;
             // weapon settings
             item.melee = true;
             item.damage = 130;
