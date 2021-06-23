@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using wartinyfall76.NPCs.Hanzo;
 using wartinyfall76.NPCs.Nina;
 
 //town npc Preston Garvey. This is both the first NPC and town NPC in this mod that was implemented ingame :)
@@ -127,17 +128,19 @@ namespace wartinyfall76.NPCs.Preston
                     return "I had to get myself a new gun from " + Main.npc[otherNPC].GivenName + ". I don't know where my Laser Musket went.";
                 }
 
-                //otherNPC = NPC.FindFirstNPC(mod.NPCType("NinaNPC")); -- doesnt work
-                //if(otherNPC >= 0 && Main.rand.NextBool(3))
-                //{
-                //had trouble getting other town NPC names...
-                //nina = NPC.FindFirstNPC(mod.NPCType("NinaNPC"));//NPC.FindFirstNPC(mod.NPCType("NinaNPC"));
-                
+            NPC nina = FindNPC(ModContent.NPCType<NinaNPC>());
+            if (nina != null && Main.rand.NextBool(8))
+            {
+                return "That Nina girl gives me the creeps...";
+            }
 
-                //return Main.npc[otherNPC].GivenName + "Please be Nina cortex"; -- did not work
-                //}
+            NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
+            if (hanzo != null && Main.rand.NextBool(8))
+            {
+                return "Hanzo seems to be a good marksman. He also seems to have something weighting greatly on his mind.";
+            }
 
-                if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
+            if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
                 {
                     return "Damm " + Main.worldName + " has monsters too...";
                 }
@@ -225,7 +228,7 @@ namespace wartinyfall76.NPCs.Preston
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.DeathLaser;
+            projType = ProjectileID.Bullet;
             attackDelay = 1;
         }
 

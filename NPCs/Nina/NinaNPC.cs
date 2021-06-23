@@ -8,6 +8,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using wartinyfall76.NPCs.Hanzo;
+using wartinyfall76.NPCs.Preston;
 
 //town npc Nina cortex. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
@@ -122,6 +124,18 @@ namespace wartinyfall76.NPCs.Nina
                 if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
                 {
                     return "Where's the destruction at! I wanna see " + Main.worldName + " overtaken by evil!"; ;
+                }
+
+                NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+                if (preston != null && Main.rand.NextBool(8))
+                {
+                    return "If Preston talks about another settlement needing help i'll make sure THIS settlement needs help!";
+                }
+
+                NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
+                if (hanzo != null && Main.rand.NextBool(8))
+                {
+                    return "I dont get it. Hanzo is not pure enough to be good but not bad enough to be evil.";
                 }
 
                 switch (Main.rand.Next(3))

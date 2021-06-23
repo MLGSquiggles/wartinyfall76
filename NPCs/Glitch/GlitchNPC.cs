@@ -9,6 +9,7 @@ using Terraria.ModLoader.IO;
 using wartinyfall76.NPCs.Nina;
 using wartinyfall76.NPCs.Preston;
 using wartinyfall76;
+using wartinyfall76.NPCs.Hanzo;
 
 
 //town npc GLitch. This is intentionally strange
@@ -285,6 +286,12 @@ namespace wartinyfall76.NPCs.Glitch
                 return "How come Preston Garvey won't sell me any ale? Either you have style, or you get styled.";
             }
 
+            NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
+            if (hanzo != null && Main.rand.NextBool(8))
+            {
+                return "Sure, me and Hanzo are pals, but I hate it when there is never a shortage of things to kill!";
+            }
+
             if (Main.bloodMoon)
             {
                 switch (Main.rand.Next(5))
@@ -369,6 +376,9 @@ namespace wartinyfall76.NPCs.Glitch
             nextSlot++;
 
             shop.item[nextSlot].SetDefaults(mod.ItemType("MatthiusPainting"));
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(mod.ItemType("FamilyPainting"));
             nextSlot++;
 
 

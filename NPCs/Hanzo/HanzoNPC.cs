@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using wartinyfall76.NPCs.Nina;
+using wartinyfall76.NPCs.Preston;
 
 //town npc Hanzo. attempted random arrow when attacking
 
@@ -144,9 +145,19 @@ namespace wartinyfall76.NPCs.Hanzo
                 return "Strength does not come from physical capability, it comes from an indomitable will.";
             }
 
-                
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+            if (preston != null && Main.rand.NextBool(8))
+            {
+                return "That Preston fellow reminds me of a certain unwieldly cowboy...";
+            }
 
-                switch (Main.rand.Next(3))
+            NPC Nina = FindNPC(ModContent.NPCType<NinaNPC>());
+            if (Nina != null && Main.rand.NextBool(8))
+            {
+                return "As such shame the Shimada Clan has fallen with, we will never fall to the level the Cortex family has...";
+            }
+
+            switch (Main.rand.Next(3))
                 {
                     case 0:
                         return "With every death, comes honor. With honor, redemption.";
