@@ -8,12 +8,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Hanzo;
-using wartinyfall76.NPCs.Nina;
+using wartinyfall76.NPCs.Town.Hanzo;
+using wartinyfall76.NPCs.Town.Nina;
 
 //town npc Preston Garvey. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
-namespace wartinyfall76.NPCs.Preston
+namespace wartinyfall76.NPCs.Town.Preston
 {
     [AutoloadHead]
     public class PrestonNPC : ModNPC
@@ -24,12 +24,12 @@ namespace wartinyfall76.NPCs.Preston
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Preston/PrestonNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Preston/PrestonNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Preston/PrestonNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Preston/PrestonNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)

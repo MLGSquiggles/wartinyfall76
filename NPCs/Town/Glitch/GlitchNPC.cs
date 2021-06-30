@@ -6,15 +6,15 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using wartinyfall76.NPCs.Nina;
-using wartinyfall76.NPCs.Preston;
+using wartinyfall76.NPCs.Town.Nina;
+using wartinyfall76.NPCs.Town.Preston;
 using wartinyfall76;
-using wartinyfall76.NPCs.Hanzo;
+using wartinyfall76.NPCs.Town.Hanzo;
 
 
 //town npc GLitch. This is intentionally strange
 
-namespace wartinyfall76.NPCs.Glitch
+namespace wartinyfall76.NPCs.Town.Glitch
 {
     [AutoloadHead]
     public class GlitchNPC : ModNPC
@@ -29,12 +29,12 @@ namespace wartinyfall76.NPCs.Glitch
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Glitch/GlitchNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Glitch/GlitchNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Glitch/GlitchNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Glitch/GlitchNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)

@@ -8,12 +8,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Nina;
-using wartinyfall76.NPCs.Preston;
+using wartinyfall76.NPCs.Town.Nina;
+using wartinyfall76.NPCs.Town.Preston;
 
 //town npc Hanzo. attempted random arrow when attacking
 
-namespace wartinyfall76.NPCs.Hanzo
+namespace wartinyfall76.NPCs.Town.Hanzo
 {
     [AutoloadHead]
     public class HanzoNPC : ModNPC
@@ -26,12 +26,12 @@ namespace wartinyfall76.NPCs.Hanzo
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Hanzo/HanzoNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Hanzo/HanzoNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Hanzo/HanzoNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Hanzo/HanzoNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)

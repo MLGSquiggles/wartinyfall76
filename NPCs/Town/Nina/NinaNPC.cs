@@ -8,12 +8,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Hanzo;
-using wartinyfall76.NPCs.Preston;
+using wartinyfall76.NPCs.Town.Hanzo;
+using wartinyfall76.NPCs.Town.Preston;
 
 //town npc Nina cortex. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
-namespace wartinyfall76.NPCs.Nina
+namespace wartinyfall76.NPCs.Town.Nina
 {
     [AutoloadHead]
     public class NinaNPC : ModNPC
@@ -24,12 +24,12 @@ namespace wartinyfall76.NPCs.Nina
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Nina/NinaNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Nina/NinaNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Nina/NinaNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Nina/NinaNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
