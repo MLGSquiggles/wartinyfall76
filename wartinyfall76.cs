@@ -37,7 +37,7 @@ namespace wartinyfall76
             //Checks if the invasion is in the correct spot, if it is, then change the music
             if (wartinyfall76World.ScorchedInvasionUp && Main.invasionX == Main.spawnTileX)
             {
-                music = ((Mod)this).GetSoundSlot(SoundType.Music, "Sounds/Music/Events/boss Theme 1");
+                music = ((Mod)this).GetSoundSlot(SoundType.Music, "Sounds/Music/Events/boss theme 1");
                 priority = (MusicPriority)6;
             }
         }
