@@ -8,8 +8,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using wartinyfall76.NPCs.Town.Eudico;
 using wartinyfall76.NPCs.Town.Hanzo;
 using wartinyfall76.NPCs.Town.Nina;
+using wartinyfall76.NPCs.Town.Preston;
 
 //town npc Klee
 
@@ -134,10 +136,22 @@ namespace wartinyfall76.NPCs.Town.Klee
                 return "Nina totally got spooked when I went fish blasting tehee!";
             }
 
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+            if (preston != null && Main.rand.NextBool(8))
+            {
+                return "Preston said the minutemen have to protect people at a minute's notice. Thats not a lot of time so he has to be very fast!";
+            }
+
             NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
             if (hanzo != null && Main.rand.NextBool(8))
             {
                 return "Hanzo got super annoyed when I went fish blasting tehee!";
+            }
+
+            NPC eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
+            if (eudico != null && Main.rand.NextBool(8))
+            {
+                return "Eudico said I would make a great ventkid. Do you know what a ventkid is?";
             }
 
             otherNPC = NPC.FindFirstNPC(NPCID.Guide);

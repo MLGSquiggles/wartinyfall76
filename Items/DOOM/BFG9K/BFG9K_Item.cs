@@ -24,7 +24,7 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 			item.knockBack = 69;
 			item.value = 1000000;
 			item.rare = 11;
-			item.UseSound = SoundID.Item1;
+			item.UseSound = SoundID.Item11;
 			item.autoReuse = false;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 5f; // the speed of the projectile (measured in pixels per frame)

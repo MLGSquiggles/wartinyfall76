@@ -10,6 +10,8 @@ using wartinyfall76.NPCs.Town.Nina;
 using wartinyfall76.NPCs.Town.Preston;
 using wartinyfall76;
 using wartinyfall76.NPCs.Town.Hanzo;
+using wartinyfall76.NPCs.Town.Klee;
+using wartinyfall76.NPCs.Town.Eudico;
 
 
 //town npc GLitch. This is intentionally strange
@@ -290,6 +292,18 @@ namespace wartinyfall76.NPCs.Town.Glitch
             if (hanzo != null && Main.rand.NextBool(8))
             {
                 return "Sure, me and Hanzo are pals, but I hate it when there is never a shortage of things to kill!";
+            }
+
+            NPC Klee = FindNPC(ModContent.NPCType<KleeNPC>());
+            if (Klee != null && Main.rand.NextBool(8))
+            {
+                return "I once tried to bring an Angel Statue to life, Klee does his business on me. That stuff's corrosive!";
+            }
+
+            NPC eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
+            if (eudico != null && Main.rand.NextBool(8))
+            {
+                return "Meet me behind Eudico's house in about three hours, I am only selling the highest quality items on the market.";
             }
 
             if (Main.bloodMoon)

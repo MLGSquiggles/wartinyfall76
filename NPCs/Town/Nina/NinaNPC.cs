@@ -8,7 +8,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using wartinyfall76.NPCs.Town.Eudico;
 using wartinyfall76.NPCs.Town.Hanzo;
+using wartinyfall76.NPCs.Town.Klee;
 using wartinyfall76.NPCs.Town.Preston;
 
 //town npc Nina cortex. This is both the first NPC and town NPC in this mod that was implemented ingame :)
@@ -136,6 +138,18 @@ namespace wartinyfall76.NPCs.Town.Nina
                 if (hanzo != null && Main.rand.NextBool(8))
                 {
                     return "I dont get it. Hanzo is not pure enough to be good but not bad enough to be evil.";
+                }
+
+                NPC klee = FindNPC(ModContent.NPCType<KleeNPC>());
+                if (klee != null && Main.rand.NextBool(8))
+                {
+                    return "I want to use those special bombs for evil but Klee uses them for fishing. How boring...";
+                }
+
+                NPC eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
+                if (klee != null && Main.rand.NextBool(8))
+                {
+                    return "Eudico looks like a monster N-Gin would fall head over heels for. Too bad she's a good guy!";
                 }
 
                 switch (Main.rand.Next(3))

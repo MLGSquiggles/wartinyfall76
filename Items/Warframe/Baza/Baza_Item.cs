@@ -2,6 +2,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using wartinyfall76.Tiles.Ultracite;
 
 namespace wartinyfall76.Items.Warframe.Baza
 {
@@ -25,23 +26,26 @@ namespace wartinyfall76.Items.Warframe.Baza
 			item.knockBack = 69;
 			item.value = 10000;
 			item.rare = 11;
-			item.UseSound = SoundID.Item1;
+			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 13f; // the speed of the projectile (measured in pixels per frame)
 			item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
 		}
 
-		/*
-		public override void AddRecipes() 
+		
+		public override void AddRecipes() //baza recepie 1 baza bp, 8 bars, 1 frost core, 1
 		{
-			//ModRecipe recipe = new ModRecipe(mod);
-			//recipe.AddIngredient(ItemID.CobaltBar, 20);
-			//recipe.AddTile(TileID.Hellforge);
-			//recipe.SetResult(this);
-			//recipe.AddRecipe();
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<Items.Warframe.Baza.BazaBlueprint_Item>(), 1);
+			recipe.AddIngredient(ItemID.HallowedBar, 8);
+			recipe.AddIngredient(ItemID.FrostCore, 1);
+			recipe.AddIngredient(ItemID.AncientBattleArmorMaterial, 1); //forbidden fragment 3783
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		} 
-		*/
+		
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-15, 0);

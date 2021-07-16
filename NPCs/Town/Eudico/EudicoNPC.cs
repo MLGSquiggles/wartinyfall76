@@ -8,17 +8,17 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Town.Eudico;
 using wartinyfall76.NPCs.Town.Hanzo;
 using wartinyfall76.NPCs.Town.Klee;
 using wartinyfall76.NPCs.Town.Nina;
+using wartinyfall76.NPCs.Town.Preston;
 
-//town npc Preston Garvey. This is both the first NPC and town NPC in this mod that was implemented ingame :)
+//town npc Eudico. 
 
-namespace wartinyfall76.NPCs.Town.Preston
+namespace wartinyfall76.NPCs.Town.Eudico
 {
     [AutoloadHead]
-    public class PrestonNPC : ModNPC
+    public class EudicoNPC : ModNPC
     {
         //this function allows us to find if it exists in the world
         public static NPC FindNPC(int npcType) => Main.npc.FirstOrDefault(npc => npc.type == npcType && npc.active);
@@ -26,12 +26,12 @@ namespace wartinyfall76.NPCs.Town.Preston
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Town/Preston/PrestonNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Eudico/EudicoNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Town/Preston/PrestonNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Eudico/EudicoNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
@@ -43,15 +43,15 @@ namespace wartinyfall76.NPCs.Town.Preston
         //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "MinutemenSeniorOfficer";
+            name = "Fb-9";
             return mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 10; //???
+            Main.npcFrameCount[npc.type] = 23; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[npc.type] = 4; //???
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
             NPCID.Sets.AttackTime[npc.type] = 80;
@@ -73,10 +73,10 @@ namespace wartinyfall76.NPCs.Town.Preston
             npc.HitSound = SoundID.NPCHit1; 
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
-            animationType = NPCID.ArmsDealer;
+            animationType = NPCID.Steampunker;
         }
 
-        //spawn in Preston if the arms dealer is alive
+        //spawn in Eudico if destroyer is defeated
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             //for (int i = 0; i < 255; i++)
@@ -95,8 +95,8 @@ namespace wartinyfall76.NPCs.Town.Preston
             //        }
             //    }
             //}
-            int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer);
-            if (otherNPC >= 0)
+            
+            if (NPC.downedMechBoss1) //if the destroyer is defeated
             {
                 return true;
             }
@@ -106,7 +106,7 @@ namespace wartinyfall76.NPCs.Town.Preston
 
         public override string TownNPCName()
         {
-            return "Preston Garvey";
+            return "Eudico";
             /*
              switch(WorldGen.genRand.Next(4))
              {case 0 :
@@ -127,50 +127,57 @@ namespace wartinyfall76.NPCs.Town.Preston
                 int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer); //checks if the guide is alive
                 if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
                 {
-                    return "I had to get myself a new gun from " + Main.npc[otherNPC].GivenName + ". I don't know where my Laser Musket went.";
+                    return "Accessing buffer. Analyzing... " + Main.npc[otherNPC].GivenName + " makes guns without using blueprints? Sparky surely you plan before you make weapons?";
                 }
+
+            otherNPC = NPC.FindFirstNPC(NPCID.Steampunker); //checks if the steampunker is alive
+            int otherNPC2 = NPC.FindFirstNPC(NPCID.Cyborg); //checks if the cyborg is alive
+            if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
+            {
+                return Main.npc[otherNPC].GivenName + " keeps wanting to study me and its getting intrusive. She already has access to " + Main.npc[otherNPC2].GivenName
+                    + " and he likes it, so why is she so persistent with me?";
+            }
 
             NPC nina = FindNPC(ModContent.NPCType<NinaNPC>());
             if (nina != null && Main.rand.NextBool(8))
             {
-                return "That Nina girl gives me the creeps...";
+                return "Accessing buffer. Analyzing... Nina Cortex's cybernetic hands seem to be malfunctioning for some reason. I hope she can get it sorted... or maybe not.";
+            }
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+            if (preston != null && Main.rand.NextBool(8))
+            {
+                return "Accessing buffer. Analyzing... Preston Garvey is a good man leading great people. If Fortuna had the Minutemen to aid our rebellion we could shove off the Taxmen for good!";
+            }
+
+            NPC klee = FindNPC(ModContent.NPCType<KleeNPC>());
+            if (preston != null && Main.rand.NextBool(8))
+            {
+                return "Accessing buffer. Analyzing... Klee's fish blasting is an interesting hobby. Throwing explosives in Orb Vallis lakes could provide lots of servofish parts, but then again it would attract the Taxmen and the parts could get damaged.";
             }
 
             NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
             if (hanzo != null && Main.rand.NextBool(8))
             {
-                return "Hanzo seems to be a good marksman. He also seems to have something weighting greatly on his mind.";
-            }
-
-            NPC klee = FindNPC(ModContent.NPCType<KleeNPC>());
-            if (klee != null && Main.rand.NextBool(8))
-            {
-                return "Klee's a great girl, but her hobbies are very dangerous.";
-            }
-
-            NPC Eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
-            if (Eudico != null && Main.rand.NextBool(8))
-            {
-                return "If I were to work together with Eudico to free Fortuna from the Corpus, our forces would be unstoppable!";
+                return "Accessing buffer. Analyzing... Hanzo's arrow efficiency rivals that of the Ivara warframes ive contracted in the past.";
             }
 
             if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
                 {
-                    return "Damm " + Main.worldName + " has monsters too...";
+                    return "I can rest easy knowing the Taxmen cant get me here, yet I still worry about everyone back at Fortuna.";
                 }
 
                 switch (Main.rand.Next(3))
                 {
                     case 0:
-                        return "You've got to protect the people at a minute's notice.";
+                        return "Status check on coolant flow. And mind it doesn't off-gas!";
                     case 1:
-                        return "At least it's not raining.";
+                        return "Make it quick. What's it gonna be?";
                     case 2:
-                        return "I kind of doubt the Brotherhood's intentions are peaceful.";
+                        return "Anyone asks: we never talked.";
                     case 3:
-                        return "I had to put on a brave face as long as there were still people counting on me. Thats the only reason I kept going.";
+                        return "I am Floor Boss Eudico FB-9. Well, seems ive got a different place in life in " + Main.worldName + " eh Sparky?";
                     default:
-                        return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
+                        return "Accessing buffer. Analyzing...";
                 }
             
             
@@ -201,15 +208,10 @@ namespace wartinyfall76.NPCs.Town.Preston
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("ScorchedTransmitter"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("BazaBlueprint_Item"));
             nextSlot++;
 
-            //condtions can also exist
-            if (Main.bloodMoon)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.BewitchingTable);
-                nextSlot++;
-            }
+           
         }
 
         public override void NPCLoot()
@@ -249,7 +251,7 @@ namespace wartinyfall76.NPCs.Town.Preston
         public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
         {
             scale = 1; //?
-            item = 434; //434 should be the clockwork assault rifle 96 is musket
+            item = mod.ItemType("Baza_Item"); //434 should be the clockwork assault rifle 96 is musket
             closeness = 1; //?
         }
 

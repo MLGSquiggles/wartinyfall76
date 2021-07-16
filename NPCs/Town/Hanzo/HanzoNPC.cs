@@ -8,6 +8,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using wartinyfall76.NPCs.Town.Eudico;
+using wartinyfall76.NPCs.Town.Klee;
 using wartinyfall76.NPCs.Town.Nina;
 using wartinyfall76.NPCs.Town.Preston;
 
@@ -155,6 +157,18 @@ namespace wartinyfall76.NPCs.Town.Hanzo
             if (Nina != null && Main.rand.NextBool(8))
             {
                 return "As such shame the Shimada Clan has fallen with, we will never fall to the level the Cortex family has...";
+            }
+
+            NPC Klee = FindNPC(ModContent.NPCType<KleeNPC>());
+            if (Klee != null && Main.rand.NextBool(8))
+            {
+                return "The barbaric nature in which Klee throws those bombs ruins my attempts at peace in this new life.";
+            }
+
+            NPC Eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
+            if (Eudico != null && Main.rand.NextBool(8))
+            {
+                return "The ammount of debt Eudico escaped from by arriving here is staggering, it would quadruple my father's empire tenfold!";
             }
 
             switch (Main.rand.Next(3))

@@ -10,14 +10,14 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace wartinyfall76.Items.Ultracite
+namespace wartinyfall76.Items.Paintings
 {
-    public class UltracideManipulatorItem : ModItem
+    public class EKBNPainting : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ultracite Manipulator");
-            Tooltip.SetDefault("'Manipulate Ultracite to your will!'");
+            DisplayName.SetDefault("EKBN Painting");
+            Tooltip.SetDefault("'Reach out for the rock's genshin warriors!'");
         }
 
         public override void SetDefaults()
@@ -37,19 +37,13 @@ namespace wartinyfall76.Items.Ultracite
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.autoReuse = true;
             //create tile
-            item.createTile = ModContent.TileType<Tiles.Ultracite.UltracideManipulatorTiles>();
+            item.createTile = ModContent.TileType<Tiles.Paintings.EKBNPaintingTiles>();
 
 
         }
-        public override void AddRecipes() //1 ancient manipulator, 25 power crystals, 20 ultracite ore
+        public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LunarCraftingStation, 1);
-            recipe.AddIngredient(ModContent.ItemType<Items.Crash.PowerCrystal>(), 25);
-            recipe.AddIngredient(ModContent.ItemType<Items.Ultracite.UltraciteOre_Item>(), 25);
-            recipe.AddTile(TileID.Hellforge);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            // Recipes here. See Basic Recipe Guide
         }
     }
 }

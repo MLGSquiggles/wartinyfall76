@@ -33,13 +33,15 @@ namespace wartinyfall76.Items.Ultracite.Tools
             item.melee = true;
             item.damage = 130;
             item.knockBack = 7;
+            item.UseSound = SoundID.Item1;
         }
 
         public override void AddRecipes() // add power crystals
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ModContent.ItemType<Items.Ultracite.UltraciteBar_Item>(), 20);
-            recipe.AddTile(TileID.LunarCraftingStation); // add custom one later
+            recipe.AddIngredient(ModContent.ItemType<Items.Ultracite.UltraciteBar_Item>(), 16);
+            recipe.AddIngredient(ModContent.ItemType<Items.Crash.PowerCrystal>(), 4);
+            recipe.AddTile(ModContent.TileType<Tiles.Ultracite.UltracideManipulatorTiles>()); // add custom one later
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
