@@ -6,12 +6,12 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using wartinyfall76.NPCs.Town.Nina;
-using wartinyfall76.NPCs.Town.Preston;
+using wartinyfall76.NPCs.Town.Crash;
+using wartinyfall76.NPCs.Town.Fallout;
 using wartinyfall76;
-using wartinyfall76.NPCs.Town.Hanzo;
-using wartinyfall76.NPCs.Town.Klee;
-using wartinyfall76.NPCs.Town.Eudico;
+using wartinyfall76.NPCs.Town.Overwatch;
+using wartinyfall76.NPCs.Town.Genshin;
+using wartinyfall76.NPCs.Town.Warframe;
 
 
 //town npc GLitch. This is intentionally strange
@@ -304,6 +304,12 @@ namespace wartinyfall76.NPCs.Town.Glitch
             if (eudico != null && Main.rand.NextBool(8))
             {
                 return "Meet me behind Eudico's house in about three hours, I am only selling the highest quality items on the market.";
+            }
+
+            NPC lisa = FindNPC(ModContent.NPCType<LisaNPC>());
+            if (lisa != null && Main.rand.NextBool(8))
+            {
+                return "I hope you like what I did to Lisa's mining helmet-flipper combination!";
             }
 
             if (Main.bloodMoon)

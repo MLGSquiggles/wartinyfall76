@@ -26,12 +26,14 @@ namespace wartinyfall76
     {
        public bool AkuAkuPet = false;
         public bool GreenStaffPet = false;
+        public bool Playtime = false;
 
         //reset stuff in this function (stuff that should be reset on death)
         public override void ResetEffects()
         {
             AkuAkuPet = false;
             GreenStaffPet = false;
+            Playtime = false;
         }
     }
 }

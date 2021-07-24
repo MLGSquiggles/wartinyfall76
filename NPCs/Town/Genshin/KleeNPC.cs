@@ -8,17 +8,20 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Town.Eudico;
-using wartinyfall76.NPCs.Town.Hanzo;
-using wartinyfall76.NPCs.Town.Klee;
-using wartinyfall76.NPCs.Town.Nina;
+using wartinyfall76.NPCs.Town.Warframe;
+using wartinyfall76.NPCs.Town.Overwatch;
+using wartinyfall76.NPCs.Town.Crash;
+using wartinyfall76.NPCs.Town.Fallout;
+using wartinyfall76.NPCs.Town.Genshin;
+using System.Net;
 
-//town npc Preston Garvey. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
-namespace wartinyfall76.NPCs.Town.Preston
+//town npc Klee
+
+namespace wartinyfall76.NPCs.Town.Genshin
 {
     [AutoloadHead]
-    public class PrestonNPC : ModNPC
+    public class KleeNPC : ModNPC
     {
         //this function allows us to find if it exists in the world
         public static NPC FindNPC(int npcType) => Main.npc.FirstOrDefault(npc => npc.type == npcType && npc.active);
@@ -26,12 +29,12 @@ namespace wartinyfall76.NPCs.Town.Preston
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Town/Preston/PrestonNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Genshin/KleeNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Town/Preston/PrestonNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Genshin/KleeNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
@@ -43,20 +46,20 @@ namespace wartinyfall76.NPCs.Town.Preston
         //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "MinutemenSeniorOfficer";
+            name = "SparkKnight";
             return mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 10; //???
+            Main.npcFrameCount[npc.type] = 23; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[npc.type] = 4; //???
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
             NPCID.Sets.AttackTime[npc.type] = 80;
             NPCID.Sets.AttackAverageChance[npc.type] = 40;
-            NPCID.Sets.HatOffsetY[npc.type] = -3; //higher the number the lower the hat, leave at 0
+            NPCID.Sets.HatOffsetY[npc.type] = 3; //higher the number the lower the hat, leave at 0
 
         }
 
@@ -73,7 +76,7 @@ namespace wartinyfall76.NPCs.Town.Preston
             npc.HitSound = SoundID.NPCHit1; 
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
-            animationType = NPCID.ArmsDealer;
+            animationType = NPCID.Angler;
         }
 
         //spawn in Preston if the arms dealer is alive
@@ -95,8 +98,8 @@ namespace wartinyfall76.NPCs.Town.Preston
             //        }
             //    }
             //}
-            int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer);
-            if (otherNPC >= 0)
+            
+            if (NPC.downedBoss2) //if eater of worlds/ brain of cthulhu is defeated
             {
                 return true;
             }
@@ -106,7 +109,7 @@ namespace wartinyfall76.NPCs.Town.Preston
 
         public override string TownNPCName()
         {
-            return "Preston Garvey";
+            return "Klee";
             /*
              switch(WorldGen.genRand.Next(4))
              {case 0 :
@@ -124,63 +127,79 @@ namespace wartinyfall76.NPCs.Town.Preston
             
             //if(!Main.bloodMoon) //if it is not a blood moon have these lines
             //{
-                int otherNPC = NPC.FindFirstNPC(NPCID.ArmsDealer); //checks if the guide is alive
+                int otherNPC = NPC.FindFirstNPC(NPCID.Demolitionist); //checks if the demolitionist is alive
                 if (otherNPC >= 0 && Main.rand.NextBool(4)) //randomly if the guide is alive
                 {
-                    return "I had to get myself a new gun from " + Main.npc[otherNPC].GivenName + ". I don't know where my Laser Musket went.";
+                    return Main.npc[otherNPC].GivenName + " has agreed to go fish blasting with me! Our bombs will get sooooo much fish!";
                 }
 
             NPC nina = FindNPC(ModContent.NPCType<NinaNPC>());
             if (nina != null && Main.rand.NextBool(8))
             {
-                return "That Nina girl gives me the creeps...";
+                return "Nina totally got spooked when I went fish blasting tehee!";
+            }
+
+            NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
+            if (preston != null && Main.rand.NextBool(8))
+            {
+                return "Preston said the minutemen have to protect people at a minute's notice. Thats not a lot of time so he has to be very fast!";
             }
 
             NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
             if (hanzo != null && Main.rand.NextBool(8))
             {
-                return "Hanzo seems to be a good marksman. He also seems to have something weighting greatly on his mind.";
+                return "Hanzo got super annoyed when I went fish blasting tehee!";
             }
 
-            NPC klee = FindNPC(ModContent.NPCType<KleeNPC>());
-            if (klee != null && Main.rand.NextBool(8))
+            NPC eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
+            if (eudico != null && Main.rand.NextBool(8))
             {
-                return "Klee's a great girl, but her hobbies are very dangerous.";
+                return "Eudico said I would make a great ventkid. Do you know what a ventkid is?";
             }
 
-            NPC Eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
-            if (Eudico != null && Main.rand.NextBool(8))
+            NPC lisa = FindNPC(ModContent.NPCType<LisaNPC>());
+            if (lisa != null && Main.rand.NextBool(8))
             {
-                return "If I were to work together with Eudico to free Fortuna from the Corpus, our forces would be unstoppable!";
+                return "Lisa is the best! She always sneaks me some treats when I visit her!";
             }
 
-            if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
+            otherNPC = NPC.FindFirstNPC(NPCID.Guide);
+            if (!Main.dayTime && otherNPC >= 0 && Main.rand.NextBool(2)) //if it is night and the guide is alive
                 {
-                    return "Damm " + Main.worldName + " has monsters too...";
+                    return " Can you please tell " + Main.npc[otherNPC].GivenName + "that Klee is not a baby and is definitely allowed out to play at night? Please take me out to play together!";
                 }
 
-                switch (Main.rand.Next(3))
+            if(Main.raining && Main.rand.NextBool(8))
+            {
+                return "Mwauhahaha, lucky all my new bombs are waterproof!";
+            }
+
+                switch (Main.rand.Next(5))
                 {
                     case 0:
-                        return "You've got to protect the people at a minute's notice.";
+                        return "Spark Knight Klee of the Knights of Favonius, reporting for duty!";
                     case 1:
-                        return "At least it's not raining.";
+                        return "Klee was a brave girl today! I found a really weird-looking lizard! Want me to show it to you?";
                     case 2:
-                        return "I kind of doubt the Brotherhood's intentions are peaceful.";
+                        return "Dear Anemo God, please make Klee's bombs blow in the right direction and only blow up bad guys. The end.";
                     case 3:
-                        return "I had to put on a brave face as long as there were still people counting on me. Thats the only reason I kept going.";
-                    default:
-                        return "There's another settlement that needs our help. I hope you can get to them quickly. We need to show people that the Minutemen are back";
-                }
-            
-            
-            
-            
+                        return "Can I come play with you today? Pleeeease? I wanna go on an adventure!";
+                     case 4:
+                         return "Hello, are you here for playtime with Klee?";
+                     case 5:
+                    return "Do you wanna come fish blasting with me? I'll get grounded for a whole day, but it's way worth it coz the fish taste sooo goood!";
+                default:
+                    return "Klee can help!";
+            }
+
+
+
+
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = Language.GetTextValue("LegacyInterface.28");
+            button = "Playtime";
             //button2 = "Debuff";
         }
 
@@ -188,17 +207,34 @@ namespace wartinyfall76.NPCs.Town.Preston
         {
             if (firstButton)
             {
+                //check if we already have the buff
+                if(Main.LocalPlayer.HasBuff(mod.BuffType("PlaytimeBuff")))
+                {
+                    Main.npcChatText = "Lets play again soon, im busy";
+
+                    return;
+                }
+
                 //is it a shop
-                shop = true;
+                Main.npcChatText = "Klee can help!";
+
+                
+                
+                //get the player
+
+                //make klee give a buff... to be added
+                Main.LocalPlayer.AddBuff(mod.BuffType("PlaytimeBuff"), 12000); //time is in seconds?
+
+
             }
             else
             {
-                Main.npcChatText = "Muahahahaha!";
+                //Main.npcChatText = "Muahahahaha!";
 
             }
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)
+       /* public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
             shop.item[nextSlot].SetDefaults(mod.ItemType("ScorchedTransmitter"));
@@ -210,7 +246,7 @@ namespace wartinyfall76.NPCs.Town.Preston
                 shop.item[nextSlot].SetDefaults(ItemID.BewitchingTable);
                 nextSlot++;
             }
-        }
+        }*/
 
         public override void NPCLoot()
         {
@@ -242,15 +278,15 @@ namespace wartinyfall76.NPCs.Town.Preston
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.Bullet;
+            projType = ProjectileID.BouncyGrenade;
             attackDelay = 1;
         }
 
         public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
         {
-            scale = 1; //?
-            item = 434; //434 should be the clockwork assault rifle 96 is musket
-            closeness = 1; //?
+            //scale = 1; //?
+            //item = 434; //434 should be the clockwork assault rifle 96 is musket
+            //closeness = 1; //?
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)

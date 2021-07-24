@@ -8,14 +8,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Town.Eudico;
-using wartinyfall76.NPCs.Town.Hanzo;
-using wartinyfall76.NPCs.Town.Klee;
-using wartinyfall76.NPCs.Town.Preston;
+using wartinyfall76.NPCs.Town.Warframe;
+using wartinyfall76.NPCs.Town.Overwatch;
+using wartinyfall76.NPCs.Town.Genshin;
+using wartinyfall76.NPCs.Town.Fallout;
 
 //town npc Nina cortex. This is both the first NPC and town NPC in this mod that was implemented ingame :)
 
-namespace wartinyfall76.NPCs.Town.Nina
+namespace wartinyfall76.NPCs.Town.Crash
 {
     [AutoloadHead]
     public class NinaNPC : ModNPC
@@ -26,12 +26,12 @@ namespace wartinyfall76.NPCs.Town.Nina
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Town/Nina/NinaNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Crash/NinaNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Town/Nina/NinaNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Crash/NinaNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
@@ -147,9 +147,15 @@ namespace wartinyfall76.NPCs.Town.Nina
                 }
 
                 NPC eudico = FindNPC(ModContent.NPCType<EudicoNPC>());
-                if (klee != null && Main.rand.NextBool(8))
+                if (eudico != null && Main.rand.NextBool(8))
                 {
                     return "Eudico looks like a monster N-Gin would fall head over heels for. Too bad she's a good guy!";
+                }
+
+                NPC lisa = FindNPC(ModContent.NPCType<LisaNPC>());
+                if (lisa != null && Main.rand.NextBool(8))
+                {
+                    return "Wait are you telling me Lisa is a witch? I thought witches had to have green skin and be evil!";
                 }
 
                 switch (Main.rand.Next(3))

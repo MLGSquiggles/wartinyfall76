@@ -8,14 +8,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using wartinyfall76.NPCs.Town.Eudico;
-using wartinyfall76.NPCs.Town.Klee;
-using wartinyfall76.NPCs.Town.Nina;
-using wartinyfall76.NPCs.Town.Preston;
+using wartinyfall76.NPCs.Town.Warframe;
+using wartinyfall76.NPCs.Town.Genshin;
+using wartinyfall76.NPCs.Town.Crash;
+using wartinyfall76.NPCs.Town.Fallout;
 
 //town npc Hanzo. attempted random arrow when attacking
 
-namespace wartinyfall76.NPCs.Town.Hanzo
+namespace wartinyfall76.NPCs.Town.Overwatch
 {
     [AutoloadHead]
     public class HanzoNPC : ModNPC
@@ -28,12 +28,12 @@ namespace wartinyfall76.NPCs.Town.Hanzo
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Town/Hanzo/HanzoNPC"; }
+            get { return "wartinyfall76/NPCs/Town/Overwatch/HanzoNPC"; }
         }
 
         public override string HeadTexture
         {
-            get { return "wartinyfall76/NPCs/Town/Hanzo/HanzoNPCHead"; }
+            get { return "wartinyfall76/NPCs/Town/Overwatch/HanzoNPCHead"; }
         }
 
         //if we got alt textures (nina doesnt need)
@@ -169,6 +169,12 @@ namespace wartinyfall76.NPCs.Town.Hanzo
             if (Eudico != null && Main.rand.NextBool(8))
             {
                 return "The ammount of debt Eudico escaped from by arriving here is staggering, it would quadruple my father's empire tenfold!";
+            }
+
+            NPC Lisa = FindNPC(ModContent.NPCType<EudicoNPC>());
+            if (Lisa != null && Main.rand.NextBool(8))
+            {
+                return "Witch of Purple Rose... Never have I ever heard of such a silly title. Everyone knows roses are indeed red.";
             }
 
             switch (Main.rand.Next(3))
