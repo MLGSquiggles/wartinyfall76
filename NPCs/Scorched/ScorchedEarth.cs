@@ -23,8 +23,10 @@ namespace wartinyfall76.NPCs.Scorched
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Lihzahrd"),
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Ichor Sticker"),
              ModLoader.GetMod("wartinyfall76").NPCType("Scorched Flying Shark"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Goblin Summoner"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Unicorn")
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Goblin Summoner"), //mini boss 1
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Unicorn"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Diabolist"),
+             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Duke Fishron") //mini boss 2
         };
 
         //Setup for an Invasion

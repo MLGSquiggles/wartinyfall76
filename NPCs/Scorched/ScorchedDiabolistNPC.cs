@@ -14,54 +14,54 @@ using Terraria.ModLoader;
 namespace wartinyfall76.NPCs.Scorched
 {
     //[AutoloadHead]
-    public class ScorchedUnicornNPC : ModNPC
+    public class ScorchedDiabolistNPC : ModNPC
     {
         //load texture for the npc
         public override string Texture
         {
-            get { return "wartinyfall76/NPCs/Scorched/ScorchedUnicornNPC"; }
+            get { return "wartinyfall76/NPCs/Scorched/ScorchedDiabolistNPC"; }
         }
 
         //setup defaults
         public override void SetStaticDefaults()
         {
             //name when you hover over it
-            DisplayName.SetDefault("Scorched Unicorn");
+            DisplayName.SetDefault("Scorched Diabolist");
 
-            Main.npcFrameCount[npc.type] = 16; //amount of sprites in the sprite sheet
+            Main.npcFrameCount[npc.type] = 3; //amount of sprites in the sprite sheet
         }
 
         public override bool Autoload(ref string name)
         {
-            name = "Scorched Unicorn";
+            name = "Scorched Diabolist";
             return mod.Properties.Autoload;
         }
 
         //for some reason this is needed to display the name when you hover over it?????
         public override string TownNPCName()
         {
-            return "Scorched Unicorn";
+            return "Scorched Diabolist";
         }
         public override void SetDefaults()
         {
 
-            npc.width = 66;
-            npc.height = 84;
-            npc.aiStyle = 26; //Unicorn AI style
-            npc.damage = 250;
-            npc.defense = 20;
-            npc.lifeMax = 2300;
-            npc.HitSound = SoundID.NPCHit12;
+            npc.width = 40;
+            npc.height = 52;
+            npc.aiStyle = 8; //Herpling AI style
+            npc.damage = 90;
+            npc.defense = 14;
+            npc.lifeMax = 2900;
+            npc.HitSound = SoundID.NPCHit22;
             npc.DeathSound = SoundID.NPCDeath23; //crimson death sound
             npc.knockBackResist = 0.01f;
-            npc.value = 30f;
+            npc.value = 60f;
 
             //use these if copying an existing thing from terraria
-            aiType = NPCID.Unicorn;
-            animationType = NPCID.Unicorn;
+            aiType = NPCID.DiabolistRed;
+            animationType = NPCID.DiabolistRed;
 
             //get NPC to banner -- uses standard zombie
-            banner = Item.NPCtoBanner(NPCID.Unicorn);
+            banner = Item.NPCtoBanner(NPCID.Derpling);
             //then link it back
             bannerItem = Item.BannerToItem(banner);
         }
@@ -99,13 +99,7 @@ namespace wartinyfall76.NPCs.Scorched
             if (Main.rand.Next(4) == 0)
             {
                 Item.NewItem(npc.position, mod.ItemType("UltraciteOre_Item"));
-            }
-
-            if (Main.rand.Next(5) == 0)
-            {
-                Item.NewItem(npc.position, mod.ItemType("UltraciteUnicornHorn"));
-            }
-
+            }            
         }
 
 

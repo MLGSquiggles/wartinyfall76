@@ -55,6 +55,7 @@ namespace wartinyfall76.NPCs.Scorched
             npc.DeathSound = SoundID.NPCDeath23; //crimson death sound
             npc.knockBackResist = 0.35f;
             npc.value = 50f;
+            npc.npcSlots = 2;
 
             npc.buffImmune[BuffID.Confused] = true;
             npc.buffImmune[BuffID.ShadowFlame] = true;
