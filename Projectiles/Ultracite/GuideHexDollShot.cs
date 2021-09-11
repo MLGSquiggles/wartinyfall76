@@ -15,7 +15,21 @@ namespace wartinyfall76.Projectiles.Ultracite
 		public override void SetDefaults() 
 		{
 			projectile.CloneDefaults(ProjectileID.Skull);
-			aiType = ProjectileID.ChlorophyteBullet;
+			aiType = ProjectileID.Skull;
+			
+		}
+
+		public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+		{
+			target.AddBuff(BuffID.Cursed, 20);
+			target.AddBuff(BuffID.ShadowFlame, 20);
+			target.AddBuff(BuffID.Venom, 20);
+		}
+		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			target.AddBuff(BuffID.Cursed, 20);
+			target.AddBuff(BuffID.ShadowFlame, 20);
+			target.AddBuff(BuffID.Venom, 20);
 		}
 
 		//public override bool PreAI()

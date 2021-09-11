@@ -21,14 +21,18 @@ namespace wartinyfall76.Items.Ultracite.Scorched
 			//item.mana = 12;
 			//item.width = 75;
 			//item.height = 32;
-			//item.useTime = (int)3.75;
-			//item.useAnimation = 60;
+			item.useTime = 5;
+			item.useAnimation = 5;
 			//item.useStyle = ItemUseStyleID.HoldingOut;
-			item.CloneDefaults(ItemID.ShadowFlameHexDoll);
+			//item.CloneDefaults(ItemID.ShadowFlameHexDoll);
 			item.knockBack = 69;
 			item.value = 10000;
 			item.rare = 11;
-			//item.UseSound = SoundID.Item11;
+			item.width = 32;
+			item.height = 32;
+			item.mana = 5;
+			item.useStyle = ItemUseStyleID.HoldingOut;
+			item.UseSound = SoundID.Item65;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("GuideHexDollShot"); //idk why but all the guns in the vanilla source have this
 			item.shootSpeed = 13f; // the speed of the projectile (measured in pixels per frame)
