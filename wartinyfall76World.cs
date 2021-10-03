@@ -52,6 +52,11 @@ namespace wartinyfall76
         }
         #endregion
 
+        #region BOSSFLAGS
+        public static bool DownedBendyBoss = false;
+
+        #endregion
+
         #region INVASION
 
         //Setting up variables for invasion -- ScorchedEarth
@@ -64,24 +69,39 @@ namespace wartinyfall76
             Main.invasionSize = 0;
             ScorchedInvasionUp = false;
             downedScorchedInvasion = false;
+            DownedBendyBoss = false;
         }
 
         //Save downed data
         public override TagCompound Save()
         {
-            var downed = new List<string>();
-            if (downedScorchedInvasion) downed.Add("scorchedInvasion");
+            var Downed = new List<string>();
+            if (downedScorchedInvasion) Downed.Add("scorchedInvasion");
+            if (DownedBendyBoss) Downed.Add("Bendy");
 
-            return new TagCompound {
-                {"downed", downed}
+            return new TagCompound 
+            {
+                {"Downed", Downed}
             };
+
         }
 
         //Load downed data
         public override void Load(TagCompound tag)
         {
-            var downed = tag.GetList<string>("downed");
-            downedScorchedInvasion = downed.Contains("scorchedInvasion");
+            var Downed = tag.GetList<string>("Downed");
+            downedScorchedInvasion = Downed.Contains("scorchedInvasion");
+            DownedBendyBoss = Downed.Contains("Bendy");
+        }
+
+        public override void LoadLegacy(BinaryReader reader)
+        {
+            int loadVersion = reader.ReadInt32();
+            {
+                BitsByte flags = reader.ReadByte();
+                downedScorchedInvasion = flags[0];
+                DownedBendyBoss = flags[0];
+            }
         }
 
         //Sync downed data
@@ -89,6 +109,7 @@ namespace wartinyfall76
         {
             BitsByte flags = new BitsByte();
             flags[0] = downedScorchedInvasion;
+            flags[0] = DownedBendyBoss;
             writer.Write(flags);
         }
 
@@ -97,6 +118,7 @@ namespace wartinyfall76
         {
             BitsByte flags = reader.ReadByte();
             downedScorchedInvasion = flags[0];
+            DownedBendyBoss = flags[0];
         }
 
         //Allow to update invasion while game is running
@@ -113,9 +135,9 @@ namespace wartinyfall76
                 ScorchedEarth.UpdateCustomInvasion();
             }
         }
+        #endregion
+
+        
     }
-
-
-    #endregion
 }
 

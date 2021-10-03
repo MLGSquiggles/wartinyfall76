@@ -13,7 +13,7 @@ using Terraria.ObjectData;
 
 namespace wartinyfall76.Tiles.Paintings
 {
-	public class GlitchedBeastPaintingTiles : ModTile
+	public class GlitchedBeastPaintingTiles: ModTile
 	{
 		public override void SetDefaults()
 		{
