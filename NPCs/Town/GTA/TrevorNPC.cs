@@ -44,7 +44,7 @@ namespace wartinyfall76.NPCs.Town.GTA
         //name is the occupation/ not personal name
         public override bool Autoload(ref string name)
         {
-            name = "Crazy Dude";
+            name = "CrazyDude";
             return mod.Properties.Autoload;
         }
 
@@ -140,13 +140,13 @@ namespace wartinyfall76.NPCs.Town.GTA
             NPC preston = FindNPC(ModContent.NPCType<PrestonNPC>());
             if (preston != null && Main.rand.NextBool(8))
             {
-                return "I've met pond slime with more personality than Preston Garvey.";
+                return "Settlement this, settlement that! Preston should settle the hell down!";
             }
 
             NPC hanzo = FindNPC(ModContent.NPCType<HanzoNPC>());
             if (hanzo != null && Main.rand.NextBool(8))
             {
-                return "Hanzo doesn't look tough, he looks constipated.";
+                return "I've met pond slime with more personality than Hanzo!";
             }
 
             NPC klee = FindNPC(ModContent.NPCType<KleeNPC>());
@@ -169,7 +169,7 @@ namespace wartinyfall76.NPCs.Town.GTA
 
             if (!Main.dayTime && Main.rand.NextBool(2)) //if it is night
                 {
-                    return "Damm " + Main.worldName + " has monsters too...";
+                    return "Shouldn't you be killing monsters or something?";
                 }
 
                 switch (Main.rand.Next(3))
@@ -214,10 +214,13 @@ namespace wartinyfall76.NPCs.Town.GTA
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("GhostCaptainPainting"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("GhostCaptainPainting")); //change to SOT rep
             nextSlot++;
 
-            shop.item[nextSlot].SetDefaults(mod.ItemType("AshtrayMazePainting"));
+            shop.item[nextSlot].SetDefaults(mod.ItemType("AshtrayMazePainting")); //change to Ahti
+            nextSlot++;
+
+            shop.item[nextSlot].SetDefaults(mod.ItemType("TrevorStatue"));
             nextSlot++;
 
             //condtions can also exist
@@ -272,7 +275,7 @@ namespace wartinyfall76.NPCs.Town.GTA
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
             multiplier = 0.5f;
-            randomOffset = 6f;
+            randomOffset = 4f;
         }
     }
 }
