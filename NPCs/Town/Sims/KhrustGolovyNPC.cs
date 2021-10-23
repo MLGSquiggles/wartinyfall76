@@ -12,6 +12,8 @@ using wartinyfall76.NPCs.Town.Warframe;
 using wartinyfall76.NPCs.Town.Genshin;
 using wartinyfall76.NPCs.Town.Crash;
 using wartinyfall76.NPCs.Town.Fallout;
+using wartinyfall76.NPCs.Town.GTA;
+using wartinyfall76.NPCs.Town.Control;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -186,6 +188,18 @@ namespace wartinyfall76.NPCs.Town.Sims
                 return "Im not much of a book person, but I would like to see Lisa's library. I hope she has stuff on music theory!";
             }
 
+            NPC Trevor = FindNPC(ModContent.NPCType<TrevorNPC>());
+            if (Trevor != null && Main.rand.NextBool(8))
+            {
+                return "Maybe Trevor can be soothed with some tunes...?";
+            }
+
+            NPC Ahti = FindNPC(ModContent.NPCType<AhtiNPC>());
+            if (Ahti != null && Main.rand.NextBool(8))
+            {
+                return "I wonder what music Ahti always listens to?";
+            }
+
             switch (Main.rand.Next(3))
                 {
                     case 0:
@@ -231,8 +245,11 @@ namespace wartinyfall76.NPCs.Town.Sims
             shop.item[nextSlot].SetDefaults(mod.ItemType("GolovyGuitar"));
             nextSlot++;
 
+            shop.item[nextSlot].SetDefaults(mod.ItemType("KhrustAndMatthiusSingPainting"));
+            nextSlot++;
 
-
+            shop.item[nextSlot].SetDefaults(mod.ItemType("KhrustGuitarPainting"));
+            nextSlot++;
         }
 
         public override void NPCLoot()
