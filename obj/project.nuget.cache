@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aKQYZTTsF9Ce9h2tr2uI4Y/cIRxu8AJtlftOgmwIwtEadjViX31zJ1VX+SfdcnYGtQhEjAvQ+IzAcXFeEEEaSQ==",
+  "dgSpecHash": "Ex/uSc2NF+GnzRAO/P9JvNzcspXy1yls1DNo1nZmUOmZdHx/dopwqxyYTH61fn82AicVzFlp/zSDtYslGmRvSw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lynbr\\OneDrive\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\wartinyfall76\\wartinyfall76.csproj",
+  "projectFilePath": "C:\\Users\\lynbr\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\wartinyfall76\\wartinyfall76.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lynbr\\.nuget\\packages\\tmodloader.codeassist\\0.1.2\\tmodloader.codeassist.0.1.2.nupkg.sha512"
+    "C:\\Users\\lynbr\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
   ],
   "logs": []
 }

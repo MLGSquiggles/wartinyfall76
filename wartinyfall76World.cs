@@ -11,8 +11,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
 using Terraria.GameContent.Generation;
+using Terraria.WorldBuilding;
 using wartinyfall76.Items.Ultracite;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -22,7 +22,7 @@ using wartinyfall76.NPCs.Scorched;
 
 namespace wartinyfall76
 {
-    public class wartinyfall76World : ModWorld
+    public class wartinyfall76World : ModSystem
     {
 
 
@@ -64,7 +64,7 @@ namespace wartinyfall76
         public static bool downedScorchedInvasion = false;
 
         //Initialize all variables to their default values
-        public override void Initialize()
+        public override void OnWorldLoad()
         {
             Main.invasionSize = 0;
             ScorchedInvasionUp = false;
@@ -73,7 +73,7 @@ namespace wartinyfall76
         }
 
         //Save downed data
-        public override TagCompound Save()
+        public override void SaveWorldData(TagCompound tag)/* Suggestion: Edit tag parameter rather than returning new TagCompound */
         {
             var Downed = new List<string>();
             if (downedScorchedInvasion) Downed.Add("scorchedInvasion");
@@ -87,7 +87,7 @@ namespace wartinyfall76
         }
 
         //Load downed data
-        public override void Load(TagCompound tag)
+        public override void LoadWorldData(TagCompound tag)
         {
             var Downed = tag.GetList<string>("Downed");
             downedScorchedInvasion = Downed.Contains("scorchedInvasion");
@@ -122,7 +122,7 @@ namespace wartinyfall76
         }
 
         //Allow to update invasion while game is running
-        public override void PostUpdate()
+        public override void PostUpdateWorld()
         {
             if (ScorchedInvasionUp)
             {

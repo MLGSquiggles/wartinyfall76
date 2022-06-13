@@ -8,26 +8,26 @@ namespace wartinyfall76.Projectiles.Pets
 	{
 		public override void SetStaticDefaults() 
 		{
-			Main.projFrames[projectile.type] = 8; //8 frames in sheet
-			Main.projPet[projectile.type] = true; //marking this as a pet
+			Main.projFrames[Projectile.type] = 8; //8 frames in sheet
+			Main.projPet[Projectile.type] = true; //marking this as a pet
 		}
 
 		public override void SetDefaults() 
 		{
-			projectile.CloneDefaults(ProjectileID.TikiSpirit);
-			aiType = ProjectileID.TikiSpirit;
+			Projectile.CloneDefaults(ProjectileID.TikiSpirit);
+			AIType = ProjectileID.TikiSpirit;
 		}
 
 		public override bool PreAI()
 		{
-			Player player = Main.player[projectile.owner];
+			Player player = Main.player[Projectile.owner];
 			player.tiki = false; //tiki spirit i think?
 			return true;
 		}
 
 		public override void AI()
 		{
-			Player player = Main.player[projectile.owner];
+			Player player = Main.player[Projectile.owner];
 			wartinyfall76Player modPlayer = player.GetModPlayer<wartinyfall76Player>();
 
 			if(player.dead)
@@ -38,7 +38,7 @@ namespace wartinyfall76.Projectiles.Pets
 			if(modPlayer.AkuAkuPet)
 			{
 				//if projectile is alive, its existence is set to 2 seconds, no longer gets set if disabled
-				projectile.timeLeft = 2;
+				Projectile.timeLeft = 2;
 			}
 		}
 	}

@@ -28,13 +28,13 @@ namespace wartinyfall76.NPCs.Scorched
             //name when you hover over it
             DisplayName.SetDefault("Scorched Snowman Gangsta");
             
-            Main.npcFrameCount[npc.type] = 4; //amount of sprites in the sprite sheet
+            Main.npcFrameCount[NPC.type] = 4; //amount of sprites in the sprite sheet
         }
 
         public override bool Autoload(ref string name)
         {
             name = "Scorched Snowman Gangsta";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //for some reason this is needed to display the name when you hover over it?????
@@ -45,25 +45,25 @@ namespace wartinyfall76.NPCs.Scorched
         public override void SetDefaults()
         {
                
-            npc.width = 30;
-            npc.height = 50;
-            npc.aiStyle = 38; //snowman AI
-            npc.damage = 40;
-            npc.defense = 30;
-            npc.lifeMax = 900;
-            npc.HitSound = SoundID.NPCHit1; 
-            npc.DeathSound = SoundID.NPCDeath23; //crimson death sound
-            npc.knockBackResist = 0.01f;
-            npc.value = 20f;
+            NPC.width = 30;
+            NPC.height = 50;
+            NPC.aiStyle = 38; //snowman AI
+            NPC.damage = 40;
+            NPC.defense = 30;
+            NPC.lifeMax = 900;
+            NPC.HitSound = SoundID.NPCHit1; 
+            NPC.DeathSound = SoundID.NPCDeath23; //crimson death sound
+            NPC.knockBackResist = 0.01f;
+            NPC.value = 20f;
 
             //use these if copying an existing thing from terraria
-            aiType = NPCID.SnowmanGangsta;
-            animationType = NPCID.SnowmanGangsta;
+            AIType = NPCID.SnowmanGangsta;
+            AnimationType = NPCID.SnowmanGangsta;
 
             //get NPC to banner -- uses standard zombie
-            banner = Item.NPCtoBanner(NPCID.Zombie);
+            Banner = Item.NPCtoBanner(NPCID.Zombie);
             //then link it back
-            bannerItem = Item.BannerToItem(banner);
+            BannerItem = Item.BannerToItem(Banner);
         }
 
         //spawn in the overworld as a test, eventually spawn in during event
@@ -86,7 +86,7 @@ namespace wartinyfall76.NPCs.Scorched
             for(int i = 0; i < 10; i++)
             {
                 int dustType = DustID.JungleSpore;
-                int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
+                int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);
                 Dust dust = Main.dust[dustIndex];
                 dust.velocity.X = dust.velocity.X * Main.rand.Next(-50, 50) * 0.01f;
                 dust.velocity.Y = dust.velocity.Y * Main.rand.Next(-50, 50) * 0.01f;
@@ -94,11 +94,11 @@ namespace wartinyfall76.NPCs.Scorched
             }
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
             if (Main.rand.Next(4) == 0)
             {
-                Item.NewItem(npc.position, mod.ItemType("UltraciteOre_Item"));
+                Item.NewItem(NPC.position, Mod.Find<ModItem>("UltraciteOre_Item").Type);
             }
         }
 

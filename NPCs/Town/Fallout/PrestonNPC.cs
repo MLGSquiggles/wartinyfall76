@@ -44,36 +44,36 @@ namespace wartinyfall76.NPCs.Town.Fallout
         public override bool Autoload(ref string name)
         {
             name = "MinutemenSeniorOfficer";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 10; //???
-            NPCID.Sets.DangerDetectRange[npc.type] = 700;
-            NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
-            NPCID.Sets.AttackTime[npc.type] = 80;
-            NPCID.Sets.AttackAverageChance[npc.type] = 40;
-            NPCID.Sets.HatOffsetY[npc.type] = -3; //higher the number the lower the hat, leave at 0
+            Main.npcFrameCount[NPC.type] = 25; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[NPC.type] = 10; //???
+            NPCID.Sets.DangerDetectRange[NPC.type] = 700;
+            NPCID.Sets.AttackType[NPC.type] = 1; //research attack types? 1 is shooting 3 is swing
+            NPCID.Sets.AttackTime[NPC.type] = 80;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 40;
+            NPCID.Sets.HatOffsetY[NPC.type] = -3; //higher the number the lower the hat, leave at 0
 
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 18;
-            npc.height = 40;
-            npc.aiStyle = 7; //town npc style
-            npc.damage = 40;
-            npc.defense = 17;
-            npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1; 
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.ArmsDealer;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.aiStyle = 7; //town npc style
+            NPC.damage = 40;
+            NPC.defense = 17;
+            NPC.lifeMax = 250;
+            NPC.HitSound = SoundID.NPCHit1; 
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.ArmsDealer;
         }
 
         //spawn in Preston if the arms dealer is alive
@@ -207,7 +207,7 @@ namespace wartinyfall76.NPCs.Town.Fallout
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("ScorchedTransmitter"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("ScorchedTransmitter").Type);
             nextSlot++;
 
             //condtions can also exist
@@ -218,9 +218,9 @@ namespace wartinyfall76.NPCs.Town.Fallout
             }
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
-            base.NPCLoot();
+            base.OnKill();
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

@@ -16,17 +16,17 @@ namespace wartinyfall76.NPCs.Scorched
         
         //Initializing an Array that can be used in any file
         public static int[] invader = {            
-            ModLoader.GetMod("wartinyfall76").NPCType("Scorched Zombie"), //idk but this was being weird
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Voodoo Demon"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Derpling"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Snowman Gangsta"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Lihzahrd"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Ichor Sticker"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Flying Shark"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Goblin Summoner"), //mini boss 1
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Unicorn"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Diabolist"),
-             ModLoader.GetMod("wartinyfall76").NPCType("Scorched Duke Fishron") //mini boss 2
+            ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Zombie").Type, //idk but this was being weird
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Voodoo Demon").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Derpling").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Snowman Gangsta").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Lihzahrd").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Ichor Sticker").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Flying Shark").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Goblin Summoner").Type, //mini boss 1
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Unicorn").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Diabolist").Type,
+             ModLoader.GetMod("wartinyfall76").Find<ModNPC>("Scorched Duke Fishron").Type //mini boss 2
         };
 
         //Setup for an Invasion

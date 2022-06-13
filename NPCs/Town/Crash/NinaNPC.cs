@@ -44,36 +44,36 @@ namespace wartinyfall76.NPCs.Town.Crash
         public override bool Autoload(ref string name)
         {
             name = "EvilStudent";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 23; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 4; //???
-            NPCID.Sets.DangerDetectRange[npc.type] = 700;
-            NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
-            NPCID.Sets.AttackTime[npc.type] = 90;
-            NPCID.Sets.AttackAverageChance[npc.type] = 30;
-            NPCID.Sets.HatOffsetY[npc.type] = 0; //higher the number the lower the hat, leave at 0
+            Main.npcFrameCount[NPC.type] = 23; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[NPC.type] = 4; //???
+            NPCID.Sets.DangerDetectRange[NPC.type] = 700;
+            NPCID.Sets.AttackType[NPC.type] = 1; //research attack types? 1 is shooting 3 is swing
+            NPCID.Sets.AttackTime[NPC.type] = 90;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+            NPCID.Sets.HatOffsetY[NPC.type] = 0; //higher the number the lower the hat, leave at 0
 
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 18;
-            npc.height = 40;
-            npc.aiStyle = 7; //town npc style
-            npc.damage = 69;
-            npc.defense = 17;
-            npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1; 
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.Nurse;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.aiStyle = 7; //town npc style
+            NPC.damage = 69;
+            NPC.defense = 17;
+            NPC.lifeMax = 250;
+            NPC.HitSound = SoundID.NPCHit1; 
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.Nurse;
         }
 
         //spawn in Nina, replace later
@@ -89,7 +89,7 @@ namespace wartinyfall76.NPCs.Town.Crash
 
                 foreach (Item item in player.inventory)
                 {
-                    if (item.type == mod.ItemType("TheStabbyStabber")) //for testing use James's stabby stabber
+                    if (item.type == Mod.Find<ModItem>("TheStabbyStabber").Type) //for testing use James's stabby stabber
                     {
                         return true;
                     }
@@ -220,7 +220,7 @@ namespace wartinyfall76.NPCs.Town.Crash
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("AkuAkuItem"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("AkuAkuItem").Type);
             nextSlot++;
 
             //condtions can also exist
@@ -231,9 +231,9 @@ namespace wartinyfall76.NPCs.Town.Crash
             }
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
-            base.NPCLoot();
+            base.OnKill();
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

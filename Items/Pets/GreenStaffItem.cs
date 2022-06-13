@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,16 +15,16 @@ namespace wartinyfall76.Items.Pets
 
 		public override void SetDefaults() 
 		{
-			item.CloneDefaults(ItemID.BoneKey);
-			item.shoot = mod.ProjectileType("GreenStaffProjectile"); //clone the existing tiki totem item
-			item.buffType = mod.BuffType("GreenStaffBuff");
+			Item.CloneDefaults(ItemID.BoneKey);
+			Item.shoot = Mod.Find<ModProjectile>("GreenStaffProjectile").Type; //clone the existing tiki totem item
+			Item.buffType = Mod.Find<ModBuff>("GreenStaffBuff").Type;
 		}
 
-		public override void UseStyle(Player player)
+		public override void UseStyle(Player player, Rectangle heldItemFrame)
 		{
 			if(player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{
-				player.AddBuff(item.buffType, 3600, true);
+				player.AddBuff(Item.buffType, 3600, true);
 			}
 		}
 

@@ -14,21 +14,21 @@ namespace wartinyfall76.Items.DOOM.BFG9K
 
 		public override void SetDefaults() 
 		{
-			item.damage = 5000;
-			item.ranged = true;
-			item.width = 75;
-			item.height = 32;
-			item.useTime = 40;
-			item.useAnimation = 40;
-			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.knockBack = 69;
-			item.value = 1000000;
-			item.rare = 11;
-			item.UseSound = SoundID.Item11;
-			item.autoReuse = false;
-			item.shoot = 10; //idk why but all the guns in the vanilla source have this
-			item.shootSpeed = 5f; // the speed of the projectile (measured in pixels per frame)
-			item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
+			Item.damage = 5000;
+			Item.ranged = true;
+			Item.width = 75;
+			Item.height = 32;
+			Item.useTime = 40;
+			Item.useAnimation = 40;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.knockBack = 69;
+			Item.value = 1000000;
+			Item.rare = 11;
+			Item.UseSound = SoundID.Item11;
+			Item.autoReuse = false;
+			Item.shoot = 10; //idk why but all the guns in the vanilla source have this
+			Item.shootSpeed = 5f; // the speed of the projectile (measured in pixels per frame)
+			Item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
 		}
 
 		/*

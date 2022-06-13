@@ -10,7 +10,7 @@ namespace wartinyfall76.Buffs.TownNPCBuffs
 	{
 		bool spawnedExplosive = false;
 
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Klee's Playtime!");
 			Description.SetDefault("Grants extra defense and the ability for extra explosives to be launched!");

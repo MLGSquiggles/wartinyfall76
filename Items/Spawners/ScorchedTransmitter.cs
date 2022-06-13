@@ -17,20 +17,20 @@ namespace wartinyfall76.Items.Spawners
 
 		public override void SetDefaults() 
 		{
-			item.width = 32;
-			item.height = 32;
-			item.scale = 1;
-			item.maxStack = 99;			
-			item.useTime = 30;
-			item.useAnimation = 30;
-			item.UseSound = SoundID.Item123;
-			item.useStyle = 1; //1 is swing, 4 is hold up
-			item.consumable = true;
-			item.value = Item.buyPrice(0, 1, 0, 0);
-			item.rare = 3;
+			Item.width = 32;
+			Item.height = 32;
+			Item.scale = 1;
+			Item.maxStack = 99;			
+			Item.useTime = 30;
+			Item.useAnimation = 30;
+			Item.UseSound = SoundID.Item123;
+			Item.useStyle = 1; //1 is swing, 4 is hold up
+			Item.consumable = true;
+			Item.value = Item.buyPrice(0, 1, 0, 0);
+			Item.rare = 3;
 		}
 
-		public override bool UseItem(Player player)
+		public override bool? UseItem(Player player)/* Suggestion: Return null instead of false */
 		{
 			if (!wartinyfall76World.ScorchedInvasionUp)
 			{
@@ -46,7 +46,7 @@ namespace wartinyfall76.Items.Spawners
 
 		public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			ModRecipe recipe = new ModRecipe(Mod);
 			recipe.AddIngredient(ItemID.CobaltBar, 20);
 			recipe.AddTile(TileID.Hellforge);
 			recipe.SetResult(this);

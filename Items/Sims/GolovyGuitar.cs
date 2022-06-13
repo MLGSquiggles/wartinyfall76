@@ -16,24 +16,24 @@ namespace wartinyfall76.Items.Sims
         public override void SetDefaults()
         {
             // hitbox
-            item.width = 56;
-            item.height = 46;
+            Item.width = 56;
+            Item.height = 46;
             // value
-            item.value = 100000;
-            item.rare = 11;
+            Item.value = 100000;
+            Item.rare = 11;
             // useage
-            item.useTime = 14; // test????
-            item.useAnimation = 14;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.useTurn = true;
-            item.autoReuse = true;
+            Item.useTime = 14; // test????
+            Item.useAnimation = 14;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTurn = true;
+            Item.autoReuse = true;
             //axe properties
-            item.axe = 36;
+            Item.axe = 36;
             // weapon settings
-            item.melee = true;
-            item.damage = 130;
-            item.knockBack = 7;
-            item.UseSound = SoundID.Item47;
+            Item.melee = true;
+            Item.damage = 130;
+            Item.knockBack = 7;
+            Item.UseSound = SoundID.Item47;
         }
 
         //public override void AddRecipes() // add power crystals

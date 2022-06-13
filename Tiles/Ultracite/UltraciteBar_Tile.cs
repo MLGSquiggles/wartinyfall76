@@ -15,7 +15,7 @@ namespace wartinyfall76.Tiles.Ultracite
 {
 	public class UltraciteBar_Tile : ModTile
 	{
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			//TileID.Sets.Ore[Type] = true;
@@ -37,12 +37,12 @@ namespace wartinyfall76.Tiles.Ultracite
 		name.SetDefault("Ultracite Bar");
 		AddMapEntry(new Color(234, 254, 126), name);
 
-		dustType = 84;
-		drop = ModContent.ItemType<Items.Ultracite.UltraciteBar_Item>();
+		DustType = 84;
+		ItemDrop = ModContent.ItemType<Items.Ultracite.UltraciteBar_Item>();
 		soundType = SoundID.Tink;
 		soundStyle = 1;
-		mineResist = 4f;
-		minPick = 225;
+		MineResist = 4f;
+		MinPick = 225;
 		}
 	}
 }

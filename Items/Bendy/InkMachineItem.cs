@@ -23,21 +23,21 @@ namespace wartinyfall76.Items.Bendy
         public override void SetDefaults()
         {
             // hitbox
-            item.width = 89;
-            item.height = 64;
+            Item.width = 89;
+            Item.height = 64;
             
-            item.maxStack = 1;
-            item.value = 19000;
-            item.rare = 11;
-            item.consumable = true;
+            Item.maxStack = 1;
+            Item.value = 19000;
+            Item.rare = 11;
+            Item.consumable = true;
             // Set other item.X values here
             // Usage
-            item.useTime = 12;
-            item.useAnimation = 12;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.autoReuse = true;
+            Item.useTime = 12;
+            Item.useAnimation = 12;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.autoReuse = true;
             //create tile
-            item.createTile = ModContent.TileType<Tiles.Bendy.InkMachineTile>();
+            Item.createTile = ModContent.TileType<Tiles.Bendy.InkMachineTile>();
 
 
         }

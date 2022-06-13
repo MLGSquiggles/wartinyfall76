@@ -16,22 +16,22 @@ namespace wartinyfall76.Items.Ultracite.Scorched
 
 		public override void SetDefaults() 
 		{
-			item.damage = 169;
-			item.ranged = true;
+			Item.damage = 169;
+			Item.ranged = true;
 			//item.width = 75;
 			//item.height = 32;
 			//item.useTime = (int)3.75;
 			//item.useAnimation = 60;
-			item.CloneDefaults(ItemID.Tsunami);
+			Item.CloneDefaults(ItemID.Tsunami);
 
 			//item.useStyle = ItemUseStyleID.HoldingOut;
-			item.knockBack = 69;
-			item.value = 100000;
-			item.rare = 11;
+			Item.knockBack = 69;
+			Item.value = 100000;
+			Item.rare = 11;
 			//item.UseSound = SoundID.Item11;
-			item.autoReuse = true;
+			Item.autoReuse = true;
 			//item.shoot = 10; //idk why but all the guns in the vanilla source have this
-			item.shootSpeed = 50f; // the speed of the projectile (measured in pixels per frame)
+			Item.shootSpeed = 50f; // the speed of the projectile (measured in pixels per frame)
 			//item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
 		}
 

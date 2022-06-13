@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -50,36 +51,36 @@ namespace wartinyfall76.NPCs.Town.Sims
         public override bool Autoload(ref string name)
         {
             name = "DisguisedAlien";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 15; //???
-            NPCID.Sets.DangerDetectRange[npc.type] = 150;
-            NPCID.Sets.AttackType[npc.type] = 3; //research attack types? 1 is shooting 3 is swing
-            NPCID.Sets.AttackTime[npc.type] = 20;
-            NPCID.Sets.AttackAverageChance[npc.type] = 15;
-            NPCID.Sets.HatOffsetY[npc.type] = 0; //higher the number the lower the hat, leave at 0
+            Main.npcFrameCount[NPC.type] = 25; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[NPC.type] = 15; //???
+            NPCID.Sets.DangerDetectRange[NPC.type] = 150;
+            NPCID.Sets.AttackType[NPC.type] = 3; //research attack types? 1 is shooting 3 is swing
+            NPCID.Sets.AttackTime[NPC.type] = 20;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 15;
+            NPCID.Sets.HatOffsetY[NPC.type] = 0; //higher the number the lower the hat, leave at 0
 
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 18;
-            npc.height = 40;
-            npc.aiStyle = 7; //town npc style
-            npc.damage = 400;
-            npc.defense = 40;
-            npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1; 
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.Merchant;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.aiStyle = 7; //town npc style
+            NPC.damage = 400;
+            NPC.defense = 40;
+            NPC.lifeMax = 250;
+            NPC.HitSound = SoundID.NPCHit1; 
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.Merchant;
         }
 
         //spawn in Preston if the arms dealer is alive
@@ -242,19 +243,19 @@ namespace wartinyfall76.NPCs.Town.Sims
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             
-            shop.item[nextSlot].SetDefaults(mod.ItemType("GolovyGuitar"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("GolovyGuitar").Type);
             nextSlot++;
 
-            shop.item[nextSlot].SetDefaults(mod.ItemType("KhrustAndMatthiusSingPainting"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("KhrustAndMatthiusSingPainting").Type);
             nextSlot++;
 
-            shop.item[nextSlot].SetDefaults(mod.ItemType("KhrustGuitarPainting"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("KhrustGuitarPainting").Type);
             nextSlot++;
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
-            base.NPCLoot();
+            base.OnKill();
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -282,7 +283,7 @@ namespace wartinyfall76.NPCs.Town.Sims
 
         public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)
         {
-            item = Main.itemTexture[mod.ItemType("GolovyGuitar")];
+            item = TextureAssets.Item[Mod.Find<ModItem>("GolovyGuitar").Type].Value;
             scale = 1;
             itemSize = 50;
             offset = new Vector2(-1, 0);

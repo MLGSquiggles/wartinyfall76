@@ -16,33 +16,33 @@ namespace wartinyfall76.Items.Ultracite.Scorched
 
 		public override void SetDefaults() 
 		{
-			item.damage = 50;
-			item.magic = true;
+			Item.damage = 50;
+			Item.magic = true;
 			//item.mana = 12;
 			//item.width = 75;
 			//item.height = 32;
-			item.useTime = 5;
-			item.useAnimation = 5;
+			Item.useTime = 5;
+			Item.useAnimation = 5;
 			//item.useStyle = ItemUseStyleID.HoldingOut;
 			//item.CloneDefaults(ItemID.ShadowFlameHexDoll);
-			item.knockBack = 69;
-			item.value = 10000;
-			item.rare = 11;
-			item.width = 32;
-			item.height = 32;
-			item.mana = 5;
-			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.UseSound = SoundID.Item65;
-			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("GuideHexDollShot"); //idk why but all the guns in the vanilla source have this
-			item.shootSpeed = 13f; // the speed of the projectile (measured in pixels per frame)
+			Item.knockBack = 69;
+			Item.value = 10000;
+			Item.rare = 11;
+			Item.width = 32;
+			Item.height = 32;
+			Item.mana = 5;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.UseSound = SoundID.Item65;
+			Item.autoReuse = true;
+			Item.shoot = Mod.Find<ModProjectile>("GuideHexDollShot").Type; //idk why but all the guns in the vanilla source have this
+			Item.shootSpeed = 13f; // the speed of the projectile (measured in pixels per frame)
 			//item.useAmmo = AmmoID.Bullet;  // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
 		}
 
 		
 		public override void AddRecipes() //baza recepie 1 sc unicorn horn, 2 guide dolls, 1 sflame doll, 10 ultracite bar
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			ModRecipe recipe = new ModRecipe(Mod);
 			recipe.AddIngredient(ModContent.ItemType<Items.Ultracite.Scorched.UltraciteUnicornHorn>(), 1);
 			recipe.AddIngredient(ItemID.GuideVoodooDoll, 2);
 			recipe.AddIngredient(ItemID.ShadowFlameHexDoll, 1);

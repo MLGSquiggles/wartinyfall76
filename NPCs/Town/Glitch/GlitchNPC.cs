@@ -49,36 +49,36 @@ namespace wartinyfall76.NPCs.Town.Glitch
         public override bool Autoload(ref string name)
         {
             name = "GlitchedAnomaly";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 25; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 10; //???
-            NPCID.Sets.DangerDetectRange[npc.type] = 1000;
-            NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
-            NPCID.Sets.AttackTime[npc.type] = 80;
-            NPCID.Sets.AttackAverageChance[npc.type] = 40;
-            NPCID.Sets.HatOffsetY[npc.type] = 0; //higher the number the lower the hat, leave at 0
+            Main.npcFrameCount[NPC.type] = 25; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[NPC.type] = 10; //???
+            NPCID.Sets.DangerDetectRange[NPC.type] = 1000;
+            NPCID.Sets.AttackType[NPC.type] = 1; //research attack types? 1 is shooting 3 is swing
+            NPCID.Sets.AttackTime[NPC.type] = 80;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 40;
+            NPCID.Sets.HatOffsetY[NPC.type] = 0; //higher the number the lower the hat, leave at 0
 
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 18;
-            npc.height = 40;
-            npc.aiStyle = 7; //town npc style
-            npc.damage = 40;
-            npc.defense = 250;
-            npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit57; 
-            npc.DeathSound = SoundID.NPCDeath62;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.Merchant;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.aiStyle = 7; //town npc style
+            NPC.damage = 40;
+            NPC.defense = 250;
+            NPC.lifeMax = 250;
+            NPC.HitSound = SoundID.NPCHit57; 
+            NPC.DeathSound = SoundID.NPCDeath62;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.Merchant;
         }
 
         //spawn in if the Preston and Nina are alive
@@ -392,13 +392,13 @@ namespace wartinyfall76.NPCs.Town.Glitch
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("GreenStaffItem"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("GreenStaffItem").Type);
             nextSlot++;
 
-            shop.item[nextSlot].SetDefaults(mod.ItemType("MatthiusPainting"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("MatthiusPainting").Type);
             nextSlot++;
 
-            shop.item[nextSlot].SetDefaults(mod.ItemType("FamilyPainting"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("FamilyPainting").Type);
             nextSlot++;
 
 
@@ -408,14 +408,14 @@ namespace wartinyfall76.NPCs.Town.Glitch
 
             if (nina != null && preston != null)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType("TrioPainting"));
+                shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("TrioPainting").Type);
                 nextSlot++;
             }
 
             //if scorched earth is defeated
             //if () //CanSellBeastPainting
             //{
-                shop.item[nextSlot].SetDefaults(mod.ItemType("GlitchedBeastPainting"));
+                shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("GlitchedBeastPainting").Type);
                 nextSlot++;
             //}
 
@@ -427,9 +427,9 @@ namespace wartinyfall76.NPCs.Town.Glitch
             }
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
-            base.NPCLoot();
+            base.OnKill();
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

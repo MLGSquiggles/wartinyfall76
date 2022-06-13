@@ -15,7 +15,7 @@ namespace wartinyfall76.Tiles.Statues
 {
 	public class TrevorStatueTiles : ModTile
 	{
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
 			Main.tileLavaDeath[Type] = true;

@@ -26,10 +26,10 @@ namespace wartinyfall76.Items.Crash
             //item.width = 20;
             //item.height = 20;
             
-            item.maxStack = 999;
-            item.value = 1800;
-            item.rare = 11;
-            item.consumable = false;
+            Item.maxStack = 999;
+            Item.value = 1800;
+            Item.rare = 11;
+            Item.consumable = false;
             // Set other item.X values here
             // Usage
             

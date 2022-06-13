@@ -28,13 +28,13 @@ namespace wartinyfall76.NPCs.Bosses.Hardmode.Bendy
             //name when you hover over it
             DisplayName.SetDefault("Bendy");
 
-            Main.npcFrameCount[npc.type] = 3; //amount of sprites in the sprite sheet
+            Main.npcFrameCount[NPC.type] = 3; //amount of sprites in the sprite sheet
         }
 
         public override bool Autoload(ref string name)
         {
             name = "Bendy";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //for some reason this is needed to display the name when you hover over it?????
@@ -45,31 +45,31 @@ namespace wartinyfall76.NPCs.Bosses.Hardmode.Bendy
 
         public override void SetDefaults()
         {
-            npc.width = 80;
-            npc.height = 102;
-            npc.aiStyle = 32;
-            npc.damage = 200;
-            npc.defense = 49;
-            npc.lifeMax = 50000;
-            npc.HitSound = SoundID.NPCHit4;
-            npc.DeathSound = SoundID.NPCDeath14;
-            npc.noGravity = true;
-            npc.noTileCollide = true;
-            npc.value = 120000f;
-            npc.knockBackResist = 0f;
-            npc.boss = true;
-            npc.npcSlots = 6f;
+            NPC.width = 80;
+            NPC.height = 102;
+            NPC.aiStyle = 32;
+            NPC.damage = 200;
+            NPC.defense = 49;
+            NPC.lifeMax = 50000;
+            NPC.HitSound = SoundID.NPCHit4;
+            NPC.DeathSound = SoundID.NPCDeath14;
+            NPC.noGravity = true;
+            NPC.noTileCollide = true;
+            NPC.value = 120000f;
+            NPC.knockBackResist = 0f;
+            NPC.boss = true;
+            NPC.npcSlots = 6f;
 
             //use these if copying an existing thing from terraria
-            aiType = NPCID.SkeletronPrime;
-            animationType = NPCID.SkeletronPrime;
+            AIType = NPCID.SkeletronPrime;
+            AnimationType = NPCID.SkeletronPrime;
 
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)((double)npc.lifeMax * 0.75);
-            npc.damage = (int)((double)npc.damage * 0.85);
+            NPC.lifeMax = (int)((double)NPC.lifeMax * 0.75);
+            NPC.damage = (int)((double)NPC.damage * 0.85);
         }
 
         

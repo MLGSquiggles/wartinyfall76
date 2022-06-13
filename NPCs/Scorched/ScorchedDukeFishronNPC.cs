@@ -49,13 +49,13 @@ namespace wartinyfall76.NPCs.Scorched
             //name when you hover over it
             DisplayName.SetDefault("Scorched Duke Fishron");
 
-            Main.npcFrameCount[npc.type] = 8; //amount of sprites in the sprite sheet
+            Main.npcFrameCount[NPC.type] = 8; //amount of sprites in the sprite sheet
         }
 
         public override bool Autoload(ref string name)
         {
             name = "Scorched Duke Fishron";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //for some reason this is needed to display the name when you hover over it?????
@@ -66,28 +66,28 @@ namespace wartinyfall76.NPCs.Scorched
         public override void SetDefaults()
         {
 
-            npc.width = 150;
-            npc.height = 100;
-            npc.aiStyle = 5; //Custom AI //-1
-            npc.damage = 300;
-            npc.defense = 20;
-            npc.lifeMax = 50000;
-            npc.HitSound = SoundID.NPCHit22;
-            npc.DeathSound = SoundID.NPCDeath23; //crimson death sound
-            npc.knockBackResist = 0f;
-            npc.value = 20f;
-            npc.noTileCollide = true;
-            npc.noGravity = true;
-            npc.netAlways = true;
-			npc.npcSlots = 4;
+            NPC.width = 150;
+            NPC.height = 100;
+            NPC.aiStyle = 5; //Custom AI //-1
+            NPC.damage = 300;
+            NPC.defense = 20;
+            NPC.lifeMax = 50000;
+            NPC.HitSound = SoundID.NPCHit22;
+            NPC.DeathSound = SoundID.NPCDeath23; //crimson death sound
+            NPC.knockBackResist = 0f;
+            NPC.value = 20f;
+            NPC.noTileCollide = true;
+            NPC.noGravity = true;
+            NPC.netAlways = true;
+			NPC.npcSlots = 4;
 
-            npc.buffImmune[BuffID.Confused] = true;
-            npc.buffImmune[BuffID.ShadowFlame] = true;
+            NPC.buffImmune[BuffID.Confused] = true;
+            NPC.buffImmune[BuffID.ShadowFlame] = true;
             
 
             //use these if copying an existing thing from terraria
-            aiType = NPCID.MeteorHead;
-            animationType = NPCID.DukeFishron;
+            AIType = NPCID.MeteorHead;
+            AnimationType = NPCID.DukeFishron;
 
 			//get NPC to banner -- uses standard zombie
 			//banner = Item.NPCtoBanner(NPCID.Derpling);
@@ -113,21 +113,21 @@ namespace wartinyfall76.NPCs.Scorched
 
 		public override void AI()
 		{
-			if (Collision.SolidCollision(npc.position, npc.width, npc.height))
+			if (Collision.SolidCollision(NPC.position, NPC.width, NPC.height))
 			{
-				npc.alpha += 15;
+				NPC.alpha += 15;
 			}
 			else
 			{
-				npc.alpha -= 15;
+				NPC.alpha -= 15;
 			}
-			if (npc.alpha < 0)
+			if (NPC.alpha < 0)
 			{
-				npc.alpha = 0;
+				NPC.alpha = 0;
 			}
-			if (npc.alpha > 150)
+			if (NPC.alpha > 150)
 			{
-				npc.alpha = 150;
+				NPC.alpha = 150;
 			}
 		}
 
@@ -987,7 +987,7 @@ namespace wartinyfall76.NPCs.Scorched
             for (int i = 0; i < 10; i++)
             {
                 int dustType = DustID.JungleSpore;
-                int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
+                int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);
                 Dust dust = Main.dust[dustIndex];
                 dust.velocity.X = dust.velocity.X * Main.rand.Next(-50, 50) * 0.01f;
                 dust.velocity.Y = dust.velocity.Y * Main.rand.Next(-50, 50) * 0.01f;
@@ -995,16 +995,16 @@ namespace wartinyfall76.NPCs.Scorched
             }
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
             if (Main.rand.Next(4) == 0)
             {
-                Item.NewItem(npc.position, mod.ItemType("UltraciteOre_Item"));
+                Item.NewItem(NPC.position, Mod.Find<ModItem>("UltraciteOre_Item").Type);
             }
 
             if (Main.rand.Next(10) == 0)
             {
-                Item.NewItem(npc.position, mod.ItemType("UltraciteTsunami"));
+                Item.NewItem(NPC.position, Mod.Find<ModItem>("UltraciteTsunami").Type);
             }
 
         }

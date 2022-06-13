@@ -8,14 +8,14 @@ namespace wartinyfall76.Projectiles.Ultracite
 	{
 		public override void SetStaticDefaults() 
 		{
-			Main.projFrames[projectile.type] = 3; //8 frames in sheet
+			Main.projFrames[Projectile.type] = 3; //8 frames in sheet
 			//Main.projPet[projectile.type] = true; //marking this as a pet
 		}
 
 		public override void SetDefaults() 
 		{
-			projectile.CloneDefaults(ProjectileID.Skull);
-			aiType = ProjectileID.Skull;
+			Projectile.CloneDefaults(ProjectileID.Skull);
+			AIType = ProjectileID.Skull;
 			
 		}
 

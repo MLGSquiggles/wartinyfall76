@@ -44,36 +44,36 @@ namespace wartinyfall76.NPCs.Town.Warframe
         public override bool Autoload(ref string name)
         {
             name = "Fb-9";
-            return mod.Properties.Autoload;
+            return Mod.Properties.Autoload;
         }
 
         //setup default stuff for town NPC
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 23; //amount of sprites in the sprite sheet
-            NPCID.Sets.AttackFrameCount[npc.type] = 4; //???
-            NPCID.Sets.DangerDetectRange[npc.type] = 700;
-            NPCID.Sets.AttackType[npc.type] = 1; //research attack types? 1 is shooting 3 is swing
-            NPCID.Sets.AttackTime[npc.type] = 80;
-            NPCID.Sets.AttackAverageChance[npc.type] = 40;
-            NPCID.Sets.HatOffsetY[npc.type] = -3; //higher the number the lower the hat, leave at 0
+            Main.npcFrameCount[NPC.type] = 23; //amount of sprites in the sprite sheet
+            NPCID.Sets.AttackFrameCount[NPC.type] = 4; //???
+            NPCID.Sets.DangerDetectRange[NPC.type] = 700;
+            NPCID.Sets.AttackType[NPC.type] = 1; //research attack types? 1 is shooting 3 is swing
+            NPCID.Sets.AttackTime[NPC.type] = 80;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 40;
+            NPCID.Sets.HatOffsetY[NPC.type] = -3; //higher the number the lower the hat, leave at 0
 
         }
 
         public override void SetDefaults()
         {
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.width = 18;
-            npc.height = 40;
-            npc.aiStyle = 7; //town npc style
-            npc.damage = 40;
-            npc.defense = 17;
-            npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1; 
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = NPCID.Steampunker;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.aiStyle = 7; //town npc style
+            NPC.damage = 40;
+            NPC.defense = 17;
+            NPC.lifeMax = 250;
+            NPC.HitSound = SoundID.NPCHit1; 
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.5f;
+            AnimationType = NPCID.Steampunker;
         }
 
         //spawn in Eudico if destroyer is defeated
@@ -214,15 +214,15 @@ namespace wartinyfall76.NPCs.Town.Warframe
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             //repeat for each item, up to 40
-            shop.item[nextSlot].SetDefaults(mod.ItemType("BazaBlueprint_Item"));
+            shop.item[nextSlot].SetDefaults(Mod.Find<ModItem>("BazaBlueprint_Item").Type);
             nextSlot++;
 
            
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
-            base.NPCLoot();
+            base.OnKill();
         }
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -257,7 +257,7 @@ namespace wartinyfall76.NPCs.Town.Warframe
         public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
         {
             scale = 1; //?
-            item = mod.ItemType("Baza_Item"); //434 should be the clockwork assault rifle 96 is musket
+            item = Mod.Find<ModItem>("Baza_Item").Type; //434 should be the clockwork assault rifle 96 is musket
             closeness = 1; //?
         }
 

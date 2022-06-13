@@ -16,29 +16,29 @@ namespace wartinyfall76.Items.Ultracite.Tools
         public override void SetDefaults()
         {
             // hitbox
-            item.width = 50;
-            item.height = 40;
+            Item.width = 50;
+            Item.height = 40;
             // value
-            item.value = 100000;
-            item.rare = 11;
+            Item.value = 100000;
+            Item.rare = 11;
             // useage
-            item.useTime = 14; // test????
-            item.useAnimation = 14;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.useTurn = true;
-            item.autoReuse = true;
+            Item.useTime = 14; // test????
+            Item.useAnimation = 14;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTurn = true;
+            Item.autoReuse = true;
             //axe properties
-            item.axe = 36;
+            Item.axe = 36;
             // weapon settings
-            item.melee = true;
-            item.damage = 130;
-            item.knockBack = 7;
-            item.UseSound = SoundID.Item1;
+            Item.melee = true;
+            Item.damage = 130;
+            Item.knockBack = 7;
+            Item.UseSound = SoundID.Item1;
         }
 
         public override void AddRecipes() // add power crystals
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            ModRecipe recipe = new ModRecipe(Mod);
             recipe.AddIngredient(ModContent.ItemType<Items.Ultracite.UltraciteBar_Item>(), 16);
             recipe.AddIngredient(ModContent.ItemType<Items.Crash.PowerCrystal>(), 4);
             recipe.AddTile(ModContent.TileType<Tiles.Ultracite.UltracideManipulatorTiles>()); // add custom one later

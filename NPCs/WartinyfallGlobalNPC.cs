@@ -58,7 +58,7 @@ namespace wartinyfall76
             }
         }
 
-        public override void NPCLoot(NPC npc)
+        public override void OnKill(NPC npc)
         {
             //When an NPC (from the invasion list) dies, add progress by decreasing size
             if (wartinyfall76World.ScorchedInvasionUp)
